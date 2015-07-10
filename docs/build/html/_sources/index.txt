@@ -21,7 +21,6 @@ Contents:
    rstfiles/edx_data_download_and_decryption
    rstfiles/populating_mongo_databases
    rstfiles/extract_csv_datasets
-   rstfiles/populating_mongo_databases
 
 
 Open Issues

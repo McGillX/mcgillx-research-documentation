@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Extracting csv Datasets &mdash; McGillX Research Documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="McGillX Research Documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="prev" title="McGillX Database Outline" href="populating_mongo_databases.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> McGillX Research Documentation
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#workflow-overview">Workflow Overview</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moocx.html">MOOCX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="moocx.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moocx.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moocx.html#moocx-package-contents">MOOCX Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edx_data_download_and_decryption.html">edX Data Download and Decryption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edx_data_download_and_decryption.html#download-the-course-package">Download the Course Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edx_data_download_and_decryption.html#downlaod-the-tracking-logs">Downlaod the Tracking Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html">McGillX Database Outline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html#populating-a-course-database">Populating A Course Database</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Extracting csv Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#anonymize-csv-datasets">4. Anonymize csv datasets</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">McGillX Research Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Extracting csv Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/rstfiles/extract_csv_datasets.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="extracting-csv-datasets">
+<h1>Extracting csv Datasets<a class="headerlink" href="#extracting-csv-datasets" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>&lt;ul&gt;</dt>
+<dd>&lt;li&gt;&lt;a href=&#8221;#demographics&#8221;&gt;Demographics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#8221;#page-interaction&#8221;&gt;Page Interaction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#8221;#forum&#8221;&gt;Forum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#8221;#access-and-performance&#8221;&gt;Access and Performance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#8221;#navigation&#8221;&gt;Navigation&lt;/a&gt;&lt;/li&gt;</dd>
+</dl>
+<p>&lt;/ul&gt;</p>
+<p>&lt;h4 id=&#8221;demographics&#8221;&gt;Demographics&lt;/h4&gt;</p>
+<p>&lt;table style=&#8221;undefined;table-layout: fixed; width: 445px&#8221;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#8221;width: 190px&#8221;&gt;
+&lt;col style=&#8221;width: 255px&#8221;&gt;
+&lt;/colgroup&gt;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&lt;tr&gt;</dt>
+<dd>&lt;th&gt;Script&lt;/th&gt;
+&lt;th&gt;Description / csv fields / Notes&lt;/th&gt;</dd>
+</dl>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/ip_to_country.py&#8221;&gt;ip_to_country.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<dl class="docutils">
+<dt>&lt;td&gt;</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>&lt;ul&gt;</dt>
+<dd>&lt;li&gt;Maps IP address of user tracking events to the associated country&lt;/li&gt;
+&lt;li&gt;Username, IP&lt;/li&gt;
+&lt;li&gt;There may be multiple ip addresses per user and some IP addresses may lack an associated username. When a user is not logged in the server emits an anonymous event that has not associated username.&lt;/li&gt;</dd>
+</dl>
+<p>&lt;/ul&gt;</p>
+</div></blockquote>
+<p class="last">&lt;/td&gt;</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/user_info.py&#8221;&gt;user_info.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<dl class="docutils">
+<dt>&lt;td&gt;</dt>
+<dd><dl class="first docutils">
+<dt>&lt;ul&gt;</dt>
+<dd>&lt;li&gt;Retrieve info about students registered in the course&lt;/li&gt;
+&lt;li&gt;User ID,&#8217;Username&#8217;, &#8216;Final Grade&#8217;, &#8216;Gender&#8217;, &#8216;Year of Birth&#8217;, &#8216;Level of Education&#8217;, &#8216;Country&#8217;, &#8216;City&#8217;&lt;/li&gt;
+&lt;li&gt;This script accesses the collections: &#8216;certificates_generatedcertificate&#8217;, &#8216;auth_userprofile&#8217;&lt;/li&gt;</dd>
+</dl>
+<p class="last">&lt;/ul&gt;</p>
+</dd>
+</dl>
+<p>&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;</p>
+</div></blockquote>
+<p>&lt;/table&gt;</p>
+<p>&lt;h4 id=&#8221;page-interaction&#8221;&gt;Page Interaction&lt;/h4&gt;</p>
+<p>&lt;table style=&#8221;undefined;table-layout: fixed; width: 445px&#8221;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#8221;width: 190px&#8221;&gt;
+&lt;col style=&#8221;width: 255px&#8221;&gt;
+&lt;/colgroup&gt;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&lt;tr&gt;</dt>
+<dd>&lt;th&gt;Script&lt;/th&gt;
+&lt;th&gt;Description / csv fields / Notes&lt;/th&gt;</dd>
+</dl>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/show_transcript_completers.py&#8221;&gt;show_transcript_completers.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Retrieve the completers (users who completed the course) and filters all those who had event_type &#8216;show_transcript&#8217;&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/session_info.py&#8221;&gt;session_info.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Gather the session time for each user everytime they logged in i.e. how long did they stay logged in&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/speed_change_video.py&#8221;&gt;speed_change_video.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Gets all the events per user when they changed speed of videos&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/seek_video.py&#8221;&gt;seek_video.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Gets all the events per user while watching videos&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/sequential_aggregation.py&#8221;&gt;sequential_aggregation.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Gather the number of various categories under each sequential including the number of html, videos, verticals etc.&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;</p>
+</div></blockquote>
+<p>&lt;/table&gt;</p>
+<p>&lt;h4 id=&#8221;forum&#8221;&gt;Forum&lt;/h4&gt;</p>
+<p>&lt;table style=&#8221;undefined;table-layout: fixed; width: 445px&#8221;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#8221;width: 190px&#8221;&gt;
+&lt;col style=&#8221;width: 255px&#8221;&gt;
+&lt;/colgroup&gt;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&lt;tr&gt;</dt>
+<dd>&lt;th&gt;Script&lt;/th&gt;
+&lt;th&gt;Description / csv fields / Notes&lt;/th&gt;</dd>
+</dl>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/forum_stats.py&#8221;&gt;forum_stats.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Calculates the number of forum threads and posts for a given course&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/forum_data.py&#8221;&gt;forum_data.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Get data for each comment thread and comment in the forum&lt;/td&gt;</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;/tr&gt;</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>&lt;tr&gt;</dt>
+<dd>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/forum_body_extraction_for_word_cloud.py&#8221;&gt;forum_body_extraction_for_word_cloud.py&lt;/a&gt;&lt;/td&gt;</dd>
+</dl>
+</div></blockquote>
+<p class="last">&lt;td&gt;Extract all of the comments and comment threads from the forum of a given course using NLTK&lt;/td&gt;</p>
+</dd>
+</dl>
+<p>&lt;/tr&gt;</p>
+</div></blockquote>
+<p>&lt;/table&gt;</p>
+<p>&lt;h4 id=&#8221;access-and-performance&#8221;&gt;Access and Performance&lt;/h4&gt;</p>
+<p>&lt;table style=&#8221;undefined;table-layout: fixed; width: 445px&#8221;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#8221;width: 190px&#8221;&gt;
+&lt;col style=&#8221;width: 255px&#8221;&gt;
+&lt;/colgroup&gt;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&lt;tr&gt;</dt>
+<dd>&lt;th&gt;Script&lt;/th&gt;
+&lt;th&gt;Description / csv fields / Notes&lt;/th&gt;</dd>
+</dl>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/date_of_registration_completers.py&#8221;&gt;date_of_registration_completers.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Get the date of registration of all users who completed the course&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/course_completers.py&#8221;&gt;course_completers.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Extract the usernames of the course completers&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/activities_with_lower_completion.py&#8221;&gt;activities_with_lower_completion.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Get the number of students who answered a given problem correctly or incorrectly&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/activity_count_completers.py&#8221;&gt;activity_count_completers.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Get the number of completers who did each activity&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/chapters_accessed_per_user.py&#8221;&gt;chapters_accessed_per_user.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Determines how many chapters were accessed by each user for a given course&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/failure_analysis.py&#8221;&gt;failure_analysis.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;extracts all the videos watched and the problems attempted by users who got grades between 50% and 59% inclusive&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/first_activity_completers.py&#8221;&gt;first_activity_completers.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Retrieve the first activity of all user who completed a course&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;</p>
+</div></blockquote>
+<p>&lt;/table&gt;</p>
+<p>&lt;h4 id=&#8221;navigation&#8221;&gt;Navigation&lt;/h4&gt;</p>
+<p>&lt;table style=&#8221;undefined;table-layout: fixed; width: 445px&#8221;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#8221;width: 190px&#8221;&gt;
+&lt;col style=&#8221;width: 255px&#8221;&gt;
+&lt;/colgroup&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;tr&gt;
+&lt;th&gt;Script&lt;/th&gt;
+&lt;th&gt;Description / csv fields / Notes&lt;/th&gt;</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/navigation_tabs_data.py&#8221;&gt;navigation_tabs_data.py&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Get the number of users who access each navigation tab&lt;/td&gt;</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/navigation_tabs_data_date.py&#8221;&gt;navigation_tabs_data_date.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Get the number of times each Navigation tab was clicked/viewed for each day during the course&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/navigation_tabs_data_date_completers.py&#8221;&gt;navigation_tabs_data_date_completers.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Get the number of times each Navigation tab was clicked/viewed, by students who completed the course, for each day during the course&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;
+&lt;tr&gt;</p>
+<blockquote>
+<div><blockquote>
+<div>&lt;td&gt;&lt;a href=&#8221;/reporting_scripts/navigational_events_completers.py&#8221;&gt;navigational_events_completers.py&lt;/a&gt;&lt;/td&gt;</div></blockquote>
+<p>&lt;td&gt;Count the number of navigation events: seq_next, seq_prev, seq_goto for those students who completed the course&lt;/td&gt;</p>
+</div></blockquote>
+<p>&lt;/tr&gt;</p>
+</div></blockquote>
+<p>&lt;/table&gt;</p>
+<div class="section" id="anonymize-csv-datasets">
+<h2>4. Anonymize csv datasets<a class="headerlink" href="#anonymize-csv-datasets" title="Permalink to this headline">¶</a></h2>
+<p><em>documentation in progress</em></p>
+<p><a href="#id1"><span class="problematic" id="id2">|Script | Description
+|:&#8212;&#8212;:|</span></a>&#8212;&#8212;&#8212;-
+<a href="#id3"><span class="problematic" id="id4">|[username_to_hash_id_reports.py](/reporting_scripts/username_to_hash_id_reports.py)|</span></a> Take a csv report as input and maps usernames to their hash ids and user ids and return a new csv_report</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="populating_mongo_databases.html" class="btn btn-neutral" title="McGillX Database Outline" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, McGillX, Department of Teaching and Learning Services at McGill University.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

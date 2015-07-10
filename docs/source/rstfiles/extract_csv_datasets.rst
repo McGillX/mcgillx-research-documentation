@@ -1,8 +1,5 @@
-
-
-3. Extract csv datasets - [reporting](/reporting) 
-----
-*documentation in progress*
+Extracting csv Datasets
+====================
 
 <ul>
     <li><a href="#demographics">Demographics</a></li>
