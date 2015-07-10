@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MOOCX &mdash; McGillX Research Documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="McGillX Research Documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="next" title="edX Data Download and Decryption" href="edx_data_download_and_decryption.html"/>
+        <link rel="prev" title="Getting Started" href="getting_started.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> McGillX Research Documentation
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#workflow-overview">Workflow Overview</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">MOOCX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moocx-package-contents">MOOCX Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edx_data_download_and_decryption.html">edX Data Download and Decryption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edx_data_download_and_decryption.html#download-the-course-package">Download the Course Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edx_data_download_and_decryption.html#downlaod-the-tracking-logs">Downlaod the Tracking Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html">McGillX Database Outline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html#populating-a-course-database">Populating A Course Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html">McGillX Database Outline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html#populating-a-course-database">Populating A Course Database</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">McGillX Research Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>MOOCX</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/rstfiles/moocx.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="moocx">
+<h1>MOOCX<a class="headerlink" href="#moocx" title="Permalink to this headline">¶</a></h1>
+<p>We are currently working towards an installable package.
+Users will be able to execute the input and output of data from the commandline.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">At the moment MOOCX can only generate a few csv reports, all database setup needs to be executed using individual python scripts and import commands outlined in this documentation.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Download the repo and run :code: python setup.py install</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>McGillX uses [Python 2.7](<a class="reference external" href="https://www.python.org/download/releases/2.7/">https://www.python.org/download/releases/2.7/</a>) scripts to populate and analyze a [Mongo Database](<a class="reference external" href="https://www.mongodb.org/">https://www.mongodb.org/</a>). In order to execute the following setup you will need to have python 2.7, mongodb and [PyMongo](<a class="reference external" href="https://api.mongodb.org/python/current/">https://api.mongodb.org/python/current/</a>) installed on your machine. Note some scripts require the installation of specific python libraries in order to run.</p>
+</div>
+<div class="section" id="moocx-package-contents">
+<h2>MOOCX Package Contents<a class="headerlink" href="#moocx-package-contents" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Directory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>edx_data_research/parsing</td>
+<td>Contains the scripts and procedures used to load the raw data (json, sql, csv, mongodb) from edx to MongoDB</td>
+</tr>
+<tr class="row-odd"><td>edx_data_research/reporting</td>
+<td>Contains scripts that were used for extracting and aggregating data for analysis</td>
+</tr>
+<tr class="row-even"><td>edx_data_research/cli</td>
+<td>Command line interface</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="edx_data_download_and_decryption.html" class="btn btn-neutral float-right" title="edX Data Download and Decryption" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral" title="Getting Started" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, McGillX, Department of Teaching and Learning Services at McGill University.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

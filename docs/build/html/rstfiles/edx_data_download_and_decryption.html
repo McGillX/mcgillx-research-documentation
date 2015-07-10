@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>edX Data Download and Decryption &mdash; McGillX Research Documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="McGillX Research Documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="next" title="McGillX Database Outline" href="populating_mongo_databases.html"/>
+        <link rel="prev" title="MOOCX" href="moocx.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> McGillX Research Documentation
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#workflow-overview">Workflow Overview</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moocx.html">MOOCX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="moocx.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moocx.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moocx.html#moocx-package-contents">MOOCX Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">edX Data Download and Decryption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-course-package">Download the Course Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downlaod-the-tracking-logs">Downlaod the Tracking Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html">McGillX Database Outline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html#populating-a-course-database">Populating A Course Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html">McGillX Database Outline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populating_mongo_databases.html#populating-a-course-database">Populating A Course Database</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">McGillX Research Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>edX Data Download and Decryption</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/rstfiles/edx_data_download_and_decryption.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="edx-data-download-and-decryption">
+<h1>edX Data Download and Decryption<a class="headerlink" href="#edx-data-download-and-decryption" title="Permalink to this headline">¶</a></h1>
+<p>We use the file transfer client&nbsp;Cyberduck&nbsp;to access the amazon s3 server which stores edX data</p>
+<ol class="arabic simple">
+<li>Start Cyberduck</li>
+<li>Click Open Connection</li>
+<li>In the new window that opens:</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Select S3 (Amazon Simple Storage Service) from the dropdown</li>
+<li>Enter the Access Key ID and Secret Access Key which has been provided to you by edX</li>
+<li>Click connect</li>
+</ol>
+</div></blockquote>
+<div class="section" id="download-the-course-package">
+<h2>Download the Course Package<a class="headerlink" href="#download-the-course-package" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Open the &#8220;/course-data&#8221; directory</li>
+<li>Download the lastest folder, it contains user profile and course information for all your institutions courses</li>
+<li>Decompress the folder</li>
+<li>Decrypt the files using [Kleopatra Gpg4win](<a class="reference external" href="http://gpg4win.org/">http://gpg4win.org/</a>)</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because we perform analysis post course offering we use the folder generated just after a courses end.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The folder contains both edge and edx.org files.</p>
+</div>
+</div>
+<div class="section" id="downlaod-the-tracking-logs">
+<h2>Downlaod the Tracking Logs<a class="headerlink" href="#downlaod-the-tracking-logs" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">To access the tracking logs click &#8220;Go&#8221; from the top menu bar</p>
+<p>Do not try finding the tracking logs in the default course directory</p>
+</li>
+<li><p class="first">Select &#8220;Go to Folder&#8221;</p>
+</li>
+<li><p class="first">In the new window that opens enter the file path &#8220;/edx-course-data&#8221; to access the tracking logs</p>
+</li>
+<li><p class="first">Find the name of your institution in the directory</p>
+<p>A directory with the following file structure should display:</p>
+<p>insituition
+-edge
+&#8211;events
+&#8212;YEAR
+&#8212;-InstitutionName-ex-events-YYYY-MM-DD.log.gz.gpg</p>
+<p>-edx
+&#8211;events
+&#8212;YEAR
+&#8212;-InstitutionName-ex-events-YYYY-MM-DD.log.gz.gpg</p>
+<p>The trackings logs are contained in the encrypted .gpg files</p>
+</li>
+<li><p class="first">Download your files of interest</p>
+</li>
+<li><p class="first">Decrypt the files using [Kleopatra Gpg4win](<a class="reference external" href="http://gpg4win.org/">http://gpg4win.org/</a>)</p>
+</li>
+</ol>
+<p>You do not need to extract the decompress the log.gz files. Our import script works with both the compressed gz and extracted log files.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="populating_mongo_databases.html" class="btn btn-neutral float-right" title="McGillX Database Outline" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="moocx.html" class="btn btn-neutral" title="MOOCX" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, McGillX, Department of Teaching and Learning Services at McGill University.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
