@@ -9,11 +9,10 @@ Workflow Overview
 .. toctree::
    :maxdepth: 2
    
-   rstfiles/moocx
-   rstfiles/edx_data_download_and_decryption
-   rstfiles/populating_mongo_databases
-   rstfiles/extract_csv_datasets
-   rstfiles/populating_mongo_databases
+   edx_data_download_and_decryption
+   populating_mongo_databases
+   moocx
+   extract_csv_datasets
 
-.. figure:: https://docs.google.com/drawings/d/17GHG0-01iaHpshhi9WYktv4g2dIc4unWwmibZ5QHofI/pub?w=1308&h=603
+.. figure:: ../../../images/mcgillx-database-structure-and-workflow.png
 
