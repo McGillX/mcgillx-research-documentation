@@ -55,7 +55,8 @@ There are two components to populating the course specific databases:
 1. For the Mongo and SQL files listed above the files are directly imported into each course's database
 2. The tracking logs are first imported into a Master Database and then extracted for course specific databases 
 
-####i. Creation of Course Specific Database (excluding tracking logs)
+i. Creation of Course Specific Database (excluding tracking logs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 JSON, Mongo and SQL files are directly imported into each course's database
 

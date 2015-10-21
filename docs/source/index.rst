@@ -14,7 +14,7 @@ platform.
 Contents:
 
 .. toctree::
-   :maxdepth: 1
+   :numbered:
    
    rstfiles/getting_started
    rstfiles/populating_mongo_databases
