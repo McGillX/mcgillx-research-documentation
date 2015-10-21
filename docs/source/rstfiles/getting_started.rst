@@ -9,7 +9,6 @@ Workflow Overview
 -----------------
 
 .. toctree::
-   :maxdepth: 1
    :numbered:
    
    edx_data_download_and_decryption
