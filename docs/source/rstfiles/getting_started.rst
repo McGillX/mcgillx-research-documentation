@@ -10,6 +10,8 @@ Workflow Overview
 
 .. toctree::
    :numbered:
+   :maxdepth: 1
+   :titlesonly:
    
    edx_data_download_and_decryption
    populating_mongo_databases

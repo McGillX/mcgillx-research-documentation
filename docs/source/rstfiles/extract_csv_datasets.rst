@@ -1,5 +1,5 @@
 Extracting csv Datasets
-====================
+=======================
 
 <ul>
     <li><a href="#demographics">Demographics</a></li>
@@ -171,8 +171,8 @@ Extracting csv Datasets
 </table>
 
 
-4. Anonymize csv datasets
-----
+Anonymize csv datasets
+-----------------------
 *documentation in progress*
 
 |Script | Description

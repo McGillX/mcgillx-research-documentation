@@ -4,11 +4,12 @@ Populating Mongo Database
 McGillX Database Outline
 ------------------------
 
-All data packages except the tracking logs are course specific as provided by edx 
+All data packages except the tracking logs are course specific as provided by edX.
 
-* Each McGillX course has one database with the following collections to store each dataset delivered by edx
+Each McGillX course has one database with the following collections to store each dataset delivered by edX.
 
 Course Specific Database Structure
+-----------------------------------
 
 +-------------------+-----------------+ 
 | Raw Data Packages | Collection Name | 
@@ -55,8 +56,8 @@ There are two components to populating the course specific databases:
 1. For the Mongo and SQL files listed above the files are directly imported into each course's database
 2. The tracking logs are first imported into a Master Database and then extracted for course specific databases 
 
-i. Creation of Course Specific Database (excluding tracking logs)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creation of Course Specific Database (excluding tracking logs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 JSON, Mongo and SQL files are directly imported into each course's database
 
@@ -67,47 +68,52 @@ JSON, Mongo and SQL files are directly imported into each course's database
    ```
    python course_structure_to_mongod.py <database_name> course_structure* <path_to_json_file>
    ```
-    *Use "course_structure" as the collection name
+    .. important::
+        
+        Use "course_structure" as the collection name
     
     
 2. Parse the [Discussion Forum Data](http://edx.readthedocs.org/projects/devdata/en/latest/internal_data_formats/discussion_data.html)
  1. Run mongod
  2. Run to following command from the console:
 
-   ```
-   mongoimport --db <database_name> --collection <collection_name*> --file path_to_file
-   ```
+:code: mongoimport --db <database_name> --collection <collection_name*> --file path_to_file
+
    
 
 3. Parse the [Student Info and Progress Data](http://edx.readthedocs.org/projects/devdata/en/latest/internal_data_formats/sql_schema.html) - [parsing/sql](parsing/sql)
  1. Run mongod
  2. Run to following commands from the console:
 
-`mongoimport -d <database_name> -c <collection_name*> --type tsv --file <path_to_file>`
+:code: mongoimport -d <database_name> -c <collection_name*> --type tsv --file <path_to_file>
 
-*Use the collection names outlined below to avoid issues
+    .. important:: 
+    
+        Use the collection names outlined below to avoid issues
 
 Enter the appropriate SQL file names
-   ```
-   mongoimport -d <database_name> -c auth_userprofile --type tsv --file {org}-{course}-{date}-auth_userprofile-prod-analytics.sql --headerline
 
-   mongoimport -d <database_name> -c certificates_generatedcertificate --type tsv --file {org}-{course}-{date}-certificates_generatedcertificate-prod-analytics.sql --headerline
-
-   mongoimport -d <database_name> -c student_courseenrollment --type tsv --file {org}-{course}-{date}-student_courseenrollment-prod-analytics.sql --headerline
-
-   mongoimport -d <database_name> -c auth_user --type tsv --file {org}-{course}-{date}-auth_user-prod-analytics.sql --headerline
-
-   mongoimport -d <database_name> -c courseware_studentmodule --type tsv --file {org}-{course}-{date}-courseware_studentmodule-prod-analytics.sql --headerline
+   .. code-block::
    
-   mongoimport -d <database_name> -c user_id_map --type tsv --file {org}-{course}-{date}-user_id_map-prod-analytics.sql --headerline
-   
-   ```
+       mongoimport -d <database_name> -c auth_userprofile --type tsv --file {org}-{course}-{date}-auth_userprofile-prod-analytics.sql --headerline
+
+       mongoimport -d <database_name> -c certificates_generatedcertificate --type tsv --file {org}-{course}-{date}-certificates_generatedcertificate-prod-analytics.sql --headerline
+
+       mongoimport -d <database_name> -c student_courseenrollment --type tsv --file {org}-{course}-{date}-student_courseenrollment-prod-analytics.sql --headerline
+
+       mongoimport -d <database_name> -c auth_user --type tsv --file {org}-{course}-{date}-auth_user-prod-analytics.sql --headerline
+
+       mongoimport -d <database_name> -c courseware_studentmodule --type tsv --file {org}-{course}-{date}-courseware_studentmodule-prod-analytics.sql --headerline
+
+       mongoimport -d <database_name> -c user_id_map --type tsv --file {org}-{course}-{date}-user_id_map-prod-analytics.sql --headerline
 
 
 
 
 
-####ii. Master Database for Tracking Logs
+
+Master Database for Tracking Logs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Tracking log data provided by edX is logged on a daily basis. The log files are not course specific.
 - All tracking logs are stored in the Master database.
