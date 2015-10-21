@@ -14,12 +14,12 @@ platform.
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
    rstfiles/getting_started
-   rstfiles/moocx
-   rstfiles/edx_data_download_and_decryption
    rstfiles/populating_mongo_databases
+   rstfiles/edx_data_download_and_decryption
+   rstfiles/moocx
    rstfiles/extract_csv_datasets
 
 

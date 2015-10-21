@@ -1,0 +1,632 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Analytics Platform &mdash; McGillX Research Documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="McGillX Research Documentation 0.0.1 documentation" href="../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> McGillX Research Documentation
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../rstfiles/getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/getting_started.html#workflow-overview">Workflow Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rstfiles/edx_data_download_and_decryption.html">1. edX Data Download and Decryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/edx_data_download_and_decryption.html#download-the-course-package">1.1. Download the Course Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/edx_data_download_and_decryption.html#downlaod-the-tracking-logs">1.2. Downlaod the Tracking Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../rstfiles/populating_mongo_databases.html">2. Populating Mongo Database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/populating_mongo_databases.html#mcgillx-database-outline">2.1. McGillX Database Outline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/populating_mongo_databases.html#populating-a-course-database">2.2. Populating A Course Database</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../rstfiles/moocx.html">3. MOOCX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/moocx.html#installation">3.1. Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/moocx.html#requirements">3.2. Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/moocx.html#moocx-package-contents">3.3. MOOCX Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../rstfiles/extract_csv_datasets.html">4. Extracting csv Datasets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rstfiles/extract_csv_datasets.html#anonymize-csv-datasets">4.1. 4. Anonymize csv datasets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rstfiles/moocx.html">3. MOOCX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/moocx.html#installation">3.1. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/moocx.html#requirements">3.2. Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/moocx.html#moocx-package-contents">3.3. MOOCX Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rstfiles/edx_data_download_and_decryption.html">1. edX Data Download and Decryption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/edx_data_download_and_decryption.html#download-the-course-package">1.1. Download the Course Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/edx_data_download_and_decryption.html#downlaod-the-tracking-logs">1.2. Downlaod the Tracking Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rstfiles/populating_mongo_databases.html">2. Populating Mongo Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/populating_mongo_databases.html#mcgillx-database-outline">2.1. McGillX Database Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/populating_mongo_databases.html#populating-a-course-database">2.2. Populating A Course Database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rstfiles/extract_csv_datasets.html">4. Extracting csv Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rstfiles/extract_csv_datasets.html#anonymize-csv-datasets">4.1. 4. Anonymize csv datasets</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">McGillX Research Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Data Analytics Platform</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/mdfiles/depricated_reference_only-introduction_original.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="data-analytics-platform">
+<span id="data-analytics-platform"></span><h1>Data Analytics Platform<a class="headerlink" href="#data-analytics-platform" title="Permalink to this headline">¶</a></h1>
+<p>This is a public repository for the tools developed and used by the McGillX research team to package, analyse, and manipulate the data that is collected through McGill&#8217;s online courses offered via the edX platform.</p>
+<div class="section" id="moocx">
+<span id="moocx"></span><h2>MOOCX<a class="headerlink" href="#moocx" title="Permalink to this headline">¶</a></h2>
+<p>We are currently working towards an installable package.
+Download the repo and run <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
+</div>
+<div class="section" id="contents">
+<span id="contents"></span><h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<p>|Directory | Description
+|:&#8212;&#8212;:|&#8212;&#8212;&#8212;-
+|edx_data_research/parsing | Contains the scripts and procedures used to load the raw data (json, sql, csv, mongodb) from edx to MongoDB
+|edx_data_research/reporting | Contains scripts that were used for extracting and aggregating data for analysis
+|edx_data_research/cli | Command line interface</p>
+</div>
+<div class="section" id="overview">
+<span id="overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Before starting the setup consult with edX to setup keys and credentials for data transfer</p>
+<ol>
+    <li><a href="#1-edx-data-download-and-decryption">edX Data Download and Decryption</a></li>
+    <li> <a href="#2-populating-mongo-databases">Populating Mongo Databases</a></li>
+    <ol>
+        <li>Import of SQL, Mongo and JSON files</li>
+        <li>Creation of Master Database for Tracking Logs</li>
+        <li>Extraction of Course Specific for Tracking Logs</li>
+    </ol>
+    <li> <a href="#3-extract-csv-datasets">Extract csv datasets</a></li>
+    <li><a href="#4-anonymize-csv-datasets">Anonymize csv datasets</a></li>
+</ol>
+<p>
+<img src="https://docs.google.com/drawings/d/17GHG0-01iaHpshhi9WYktv4g2dIc4unWwmibZ5QHofI/pub?w=1308&h=603"/>
+</p><ol class="simple">
+<li>edX Data Download and Decryption</li>
+</ol>
+<hr class="docutils" />
+<p>We use the file transfer client&nbsp;Cyberduck&nbsp;to access the amazon s3 server</p>
+<ol>
+<li><p class="first">Click Open Connection</p>
+</li>
+<li><p class="first">In the new window that opens:</p>
+</li>
+<li><p class="first">Select S3 (Amazon Simple Storage Service) from the dropdown</p>
+</li>
+<li><p class="first">Enter the Access Key ID and Secret Access Key which has been provided to you by edX</p>
+</li>
+<li><p class="first">Click connect</p>
+</li>
+<li><p class="first">To access the tracking logs click &#8220;Go&#8221; from the top menu bar</p>
+<p>Do not try finding the tracking logs in the default course directory</p>
+</li>
+<li><p class="first">Select &#8220;Go to Folder&#8221;</p>
+</li>
+<li><p class="first">In the new window that opens enter the file path &#8220;/edx-course-data&#8221; to access the tracking logs (&#8220;/course-data&#8221; to acess the student profile, course structure and forum data)</p>
+</li>
+<li><p class="first">Find the name of your institution in the directory</p>
+<p>A directory with the following file structure should display:</p>
+<p>\insituition-\edge&#8211;\events&#8212;\YEAR&#8212;-\InstitutionName-ex-events-YYYY-MM-DD.log.gz.gpg</p>
+<p>-\edx&#8211;\events&#8212;\YEAR&#8212;-\InstitutionName-ex-events-YYYY-MM-DD.log.gz.gpg</p>
+<p>The trackings logs are contained in the encrypted .gpg files</p>
+</li>
+<li><p class="first">Download your files of interest</p>
+</li>
+<li><p class="first">Decrypt the files using <a class="reference external" href="http://gpg4win.org/">Kleopatra Gpg4win</a></p>
+</li>
+<li><p class="first">Populating Mongo Databases</p>
+</li>
+</ol>
+<hr class="docutils" />
+<p>McGillX uses <a class="reference external" href="https://www.python.org/download/releases/2.7/">Python 2.7</a> scripts to populate and analyze a <a class="reference external" href="https://www.mongodb.org/">Mongo Database</a>. In order to execute the following setup you will need to have python 2.7, mongodb and <a class="reference external" href="https://api.mongodb.org/python/current/">PyMongo</a> installed on your machine. Note some scripts require the installation of specific python libraries in order to run.</p>
+<p>####McGillX Database Outline</p>
+<p><em>documentation in progress</em></p>
+<p>####Course Specific Database Structure</p>
+<ul class="simple">
+<li>Each McGillX course has one database with the following collections to store each dataset delivered by edx:</li>
+</ul>
+<p>All data packages except the tracking logs are course specific as provided by edx</p>
+<p>| Raw Data Packages | Collection Name* |
+| &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;   |:&#8212;&#8212;&#8212;&#8212;-:  | |
+|{org}-{course}-{date}-auth_user-{site}-analytics.sql| user |
+|{org}-{course}-{date}-auth_userprofile-{site}-analytics.sql| userprofile |
+|{org}-{course}-{date}-certificates_generatedcertificate-{site}-analytics.sql| certificates |
+|{org}-{course}-{date}-courseware_studentmodule-{site}-analytics.sql| courseware_studentmodule |
+| {org}-email_opt_in-{site}-analytics.csv   | NOT IN USE |
+| {org}-{course}-{date}-student_courseenrollment-{site}-analytics.sql    | enrollment |
+| {org}-{course}-{date}-user_api_usercoursetag-{site}-analytics.sql | NOT IN USE |
+| {org}-{course}-{date}-user_id_map-{site}-analytics.sql    | user_id_map |
+| {org}-{course}-{date}-{site}.mongo     | forum |
+| {org}-{course}-{date}-wiki_article-{site}-analytics.sql     | NOT IN USE |
+| {org}-{course}-{date}-wiki_articlerevision-{site}-analytics.sql     | NOT IN USE |
+| {org}-{course}-{date}-course_structure-{site}-analytics.json     | course_structure |
+| Tracking Logs     | tracking |</p>
+<p>*Please use the collection names outlined above to avoid import and report generation issues.</p>
+<p><em>{site} always appears as &#8220;prod&#8221;</em></p>
+<p>There are two components to populating the course specific databases:</p>
+<ol class="simple">
+<li>For the Mongo and SQL files listed above the files are directly imported into each course&#8217;s database</li>
+<li>The tracking logs are first imported into a Master Database and then extracted for course specific databases</li>
+</ol>
+<p>####i. Creation of Course Specific Database (excluding tracking logs)</p>
+<p>JSON, Mongo and SQL files are directly imported into each course&#8217;s database</p>
+<ol class="simple">
+<li>Parse the Course Structure - <a class="reference external" href="parsing/course_structure">parsing/course_structure</a></li>
+<li>Run mongod</li>
+<li>Run <a class="reference external" href="parsing/course_structure/course_structure_to_mongod.py">course_structure_to_mongod.py</a></li>
+</ol>
+<pre class="literal-block">
+python course_structure_to_mongod.py &lt;database_name&gt; course_structure* &lt;path_to_json_file&gt;
+</pre>
+<pre class="literal-block">
+*Use &quot;course_structure&quot; as the collection name
+</pre>
+<ol class="simple">
+<li>Parse the <a class="reference external" href="http://edx.readthedocs.org/projects/devdata/en/latest/internal_data_formats/discussion_data.html">Discussion Forum Data</a></li>
+<li>Run mongod</li>
+<li>Run to following command from the console:</li>
+</ol>
+<pre class="literal-block">
+mongoimport --db &lt;database_name&gt; --collection &lt;collection_name*&gt; --file path_to_file
+</pre>
+<ol class="simple">
+<li>Parse the <a class="reference external" href="http://edx.readthedocs.org/projects/devdata/en/latest/internal_data_formats/sql_schema.html">Student Info and Progress Data</a> - <a class="reference external" href="parsing/sql">parsing/sql</a></li>
+<li>Run mongod</li>
+<li>Run to following commands from the console:</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">mongoimport</span> <span class="pre">-d</span> <span class="pre">&lt;database_name&gt;</span> <span class="pre">-c</span> <span class="pre">&lt;collection_name*&gt;</span> <span class="pre">--type</span> <span class="pre">tsv</span> <span class="pre">--file</span> <span class="pre">&lt;path_to_file&gt;</span></code></p>
+<p>*Use the collection names outlined below to avoid issues</p>
+<p>Enter the appropriate SQL file names</p>
+<pre class="literal-block">
+mongoimport -d &lt;database_name&gt; -c auth_userprofile --type tsv --file {org}-{course}-{date}-auth_userprofile-prod-analytics.sql --headerline
+
+mongoimport -d &lt;database_name&gt; -c certificates_generatedcertificate --type tsv --file {org}-{course}-{date}-certificates_generatedcertificate-prod-analytics.sql --headerline
+
+mongoimport -d &lt;database_name&gt; -c student_courseenrollment --type tsv --file {org}-{course}-{date}-student_courseenrollment-prod-analytics.sql --headerline
+
+mongoimport -d &lt;database_name&gt; -c auth_user --type tsv --file {org}-{course}-{date}-auth_user-prod-analytics.sql --headerline
+
+mongoimport -d &lt;database_name&gt; -c courseware_studentmodule --type tsv --file {org}-{course}-{date}-courseware_studentmodule-prod-analytics.sql --headerline
+
+mongoimport -d &lt;database_name&gt; -c user_id_map --type tsv --file {org}-{course}-{date}-user_id_map-prod-analytics.sql --headerline
+
+</pre>
+<p>####ii. Master Database for Tracking Logs</p>
+<ul class="simple">
+<li>Tracking log data provided by edX is logged on a daily basis. The log files are not course specific.</li>
+<li>All tracking logs are stored in the Master database.</li>
+<li>Course specifc tracking logs are extracted and stored in a course specific database.</li>
+</ul>
+<p>Master Database structure:</p>
+<ul class="simple">
+<li>Database name: tracking_logs</li>
+<li>Collection: tracking</li>
+</ul>
+<p>Migrate tracking logs to Master Database - <a class="reference external" href="parsing/tracking_logs">parsing/tracking_logs</a></p>
+<ol class="simple">
+<li>Run mongod</li>
+<li>Run <a class="reference external" href="parsing/tracking_logs/load_tracking_logs_to_mongo.py">load_tracking_logs_to_mongo.py</a></li>
+</ol>
+<pre class="literal-block">
+python load_tracking_logs_to_mongo.py &lt;database_name&gt; &lt;collection_name&gt; &lt;path_to_directory_containing_trackings_logs&gt;
+</pre>
+<pre class="literal-block">
+Use tracking as both the database and collection name
+</pre>
+<p>A second collection called {collection_name}_imported is automatically generated to keep track of what files were successfully imported and errors that occured</p>
+<p><strong><em>Errors:</em></strong> {org}-edx-events-{date}.log.gz-errors files are generated when documents are not successfully loaded to the database</p>
+<ul class="simple">
+<li>Some events associated with openassessments generate errors. We are working to resolve the issue.</li>
+</ul>
+<p>####iii. Course Specific Collection for Tracking Logs</p>
+<p>Course specific tracking log data is filtered by course ID as well as course enrollment start date and course end date.</p>
+<p>This process creates a new collection that will contain tracking logs of given course along with extracts from the course_structure collection.</p>
+<p><strong><em>Note</em></strong></p>
+<ul class="simple">
+<li>Before extracting the tracking logs of a course make sure the course structure data has been migrated to the course specific database.</li>
+<li>A subset of the course structure data is appended to the corresponding record in the tracking log.
+Ensure the course_structure data for the given course has been migrated to its own collection in the course database.</li>
+<li>The data is provided in json format and can be migrated using the script parsing/course_structure/course_structure_to_mongod.py</li>
+</ul>
+<p>Generate course specific tracking log collections - <a class="reference external" href="parsing/tracking_logs">parsing/tracking_logs</a></p>
+<ol class="simple">
+<li>Setup <a class="reference external" href="/parsing/tracking_logs/course_config/template_config.json">template_config.json</a></li>
+</ol>
+<ul>
+<li><p class="first">Create a config file for each course using the template</p>
+</li>
+<li><p class="first">The config file will be used to extract course specific tracking logs between the specified course start of enrollment date and end of course date</p>
+<div class="highlight-python"><div class="highlight"><pre>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>{</p>
+<pre class="literal-block">
+&quot;edx_id&quot; : &quot;&quot;,
+&quot;edx_course_name&quot; : &quot;&quot;,
+&quot;course_ids&quot; : [&quot;&quot;, &quot;&quot;],
+&quot;date_of_course_enrollment&quot; : &quot;YYYY-MM-DD&quot;,
+&quot;date_of_course_completion&quot; : &quot;YYYY-MM-DD&quot;
+</pre>
+<p>}</p>
+<pre class="literal-block">
+- A single course may have multiple course ID's associated with its events. Search the main tracking collection for potential course ID's. From the mongo shell execute the following for a print out of the course ID's:
+`db.tracking.distinct('course_id')`
+2. Run [generate_course_tracking_logs.py](/parsing/tracking_logs/generate_course_tracking_logs.py) 
+</pre>
+<p>python generate_course_tracking_logs.py &lt;source_db&gt; &lt;source_collection&gt; &lt;destination_db&gt; &lt;destination_collection&gt; &lt;path_to_config_file&gt;</p>
+<pre class="literal-block">
+
+
+
+3. Extract csv datasets - [reporting](/reporting) 
+----
+*documentation in progress*
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&quot;#demographics&quot;&gt;Demographics&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;#page-interaction&quot;&gt;Page Interaction&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;#forum&quot;&gt;Forum&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;#access-and-performance&quot;&gt;Access and Performance&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;#navigation&quot;&gt;Navigation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;demographics&quot;&gt;Demographics&lt;/h4&gt;
+
+&lt;table style=&quot;undefined;table-layout: fixed; width: 445px&quot;&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width: 190px&quot;&gt;
+&lt;col style=&quot;width: 255px&quot;&gt;
+&lt;/colgroup&gt;
+&lt;tr&gt;
+ &lt;th&gt;Script&lt;/th&gt;
+ &lt;th&gt;Description / csv fields / Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/ip_to_country.py&quot;&gt;ip_to_country.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;
+     &lt;ul&gt;
+         &lt;li&gt;Maps IP address of user tracking events to the associated country&lt;/li&gt;
+         &lt;li&gt;Username, IP&lt;/li&gt;
+         &lt;li&gt;There may be multiple ip addresses per user and some IP addresses may lack an associated username. When a user is not logged in the server emits an anonymous event that has not associated username.&lt;/li&gt;
+     &lt;/ul&gt;
+   &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/user_info.py&quot;&gt;user_info.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;
+     &lt;ul&gt;
+         &lt;li&gt;Retrieve info about students registered in the course&lt;/li&gt;
+         &lt;li&gt;User ID,'Username', 'Final Grade', 'Gender', 'Year of Birth', 'Level of Education', 'Country', 'City'&lt;/li&gt;
+         &lt;li&gt;This script accesses the collections: 'certificates_generatedcertificate', 'auth_userprofile'&lt;/li&gt;
+     &lt;/ul&gt;
+ &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;page-interaction&quot;&gt;Page Interaction&lt;/h4&gt;
+
+&lt;table style=&quot;undefined;table-layout: fixed; width: 445px&quot;&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width: 190px&quot;&gt;
+&lt;col style=&quot;width: 255px&quot;&gt;
+&lt;/colgroup&gt;
+&lt;tr&gt;
+ &lt;th&gt;Script&lt;/th&gt;
+ &lt;th&gt;Description / csv fields / Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/show_transcript_completers.py&quot;&gt;show_transcript_completers.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Retrieve the completers (users who completed the course) and filters all those who had event_type 'show_transcript'&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/session_info.py&quot;&gt;session_info.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Gather the session time for each user everytime they logged in i.e. how long did they stay logged in&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/speed_change_video.py&quot;&gt;speed_change_video.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Gets all the events per user when they changed speed of videos&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/seek_video.py&quot;&gt;seek_video.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Gets all the events per user while watching videos&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/sequential_aggregation.py&quot;&gt;sequential_aggregation.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Gather the number of various categories under each sequential including the number of html, videos, verticals etc.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;forum&quot;&gt;Forum&lt;/h4&gt;
+
+&lt;table style=&quot;undefined;table-layout: fixed; width: 445px&quot;&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width: 190px&quot;&gt;
+&lt;col style=&quot;width: 255px&quot;&gt;
+&lt;/colgroup&gt;
+&lt;tr&gt;
+ &lt;th&gt;Script&lt;/th&gt;
+ &lt;th&gt;Description / csv fields / Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/forum_stats.py&quot;&gt;forum_stats.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Calculates the number of forum threads and posts for a given course&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/forum_data.py&quot;&gt;forum_data.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Get data for each comment thread and comment in the forum&lt;/td&gt;
+&lt;/tr&gt;
+         &lt;tr&gt;
+             &lt;td&gt;&lt;a href=&quot;/reporting_scripts/forum_body_extraction_for_word_cloud.py&quot;&gt;forum_body_extraction_for_word_cloud.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Extract all of the comments and comment threads from the forum of a given course using NLTK&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+     
+&lt;h4 id=&quot;access-and-performance&quot;&gt;Access and Performance&lt;/h4&gt;
+         
+&lt;table style=&quot;undefined;table-layout: fixed; width: 445px&quot;&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width: 190px&quot;&gt;
+&lt;col style=&quot;width: 255px&quot;&gt;
+&lt;/colgroup&gt;
+&lt;tr&gt;
+ &lt;th&gt;Script&lt;/th&gt;
+ &lt;th&gt;Description / csv fields / Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/date_of_registration_completers.py&quot;&gt;date_of_registration_completers.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Get the date of registration of all users who completed the course&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/course_completers.py&quot;&gt;course_completers.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Extract the usernames of the course completers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/activities_with_lower_completion.py&quot;&gt;activities_with_lower_completion.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Get the number of students who answered a given problem correctly or incorrectly&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/activity_count_completers.py&quot;&gt;activity_count_completers.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Get the number of completers who did each activity&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/chapters_accessed_per_user.py&quot;&gt;chapters_accessed_per_user.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Determines how many chapters were accessed by each user for a given course&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/failure_analysis.py&quot;&gt;failure_analysis.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;extracts all the videos watched and the problems attempted by users who got grades between 50% and 59% inclusive&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/first_activity_completers.py&quot;&gt;first_activity_completers.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Retrieve the first activity of all user who completed a course&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;navigation&quot;&gt;Navigation&lt;/h4&gt;
+
+&lt;table style=&quot;undefined;table-layout: fixed; width: 445px&quot;&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width: 190px&quot;&gt;
+&lt;col style=&quot;width: 255px&quot;&gt;
+&lt;/colgroup&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Script&lt;/th&gt;
+ &lt;th&gt;Description / csv fields / Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+ &lt;td&gt;&lt;a href=&quot;/reporting_scripts/navigation_tabs_data.py&quot;&gt;navigation_tabs_data.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Get the number of users who access each navigation tab&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/navigation_tabs_data_date.py&quot;&gt;navigation_tabs_data_date.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Get the number of times each Navigation tab was clicked/viewed for each day during the course&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/navigation_tabs_data_date_completers.py&quot;&gt;navigation_tabs_data_date_completers.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Get the number of times each Navigation tab was clicked/viewed, by students who completed the course, for each day during the course&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td&gt;&lt;a href=&quot;/reporting_scripts/navigational_events_completers.py&quot;&gt;navigational_events_completers.py&lt;/a&gt;&lt;/td&gt;
+ &lt;td&gt;Count the number of navigation events: seq_next, seq_prev, seq_goto for those students who completed the course&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+4. Anonymize csv datasets
+----
+*documentation in progress*
+
+|Script | Description
+|:------:|----------
+|[username_to_hash_id_reports.py](/reporting_scripts/username_to_hash_id_reports.py)| Take a csv report as input and maps usernames to their hash ids and user ids and return a new csv_report
+
+## Open Issues
+
+- invalid doc errors generated when loading some open assessment events to Mongodb edx_data_research/edx_data_research/parsing/tracking_logs/load_tracking_logs_to_mongo.py
+
+
+## Contact
+
+You can contact McGillX for any help in running the scripts, setting up or just an explanation about a specific script:
+
+McGillX - &lt;mcgillx.tls&#64;mcgill.ca&gt;
+
+## Contribute
+
+If you would like to add new scripts, improve existing scripts, or found an error in the script feel free to send a pull request or raise an issue.
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, McGillX, Department of Teaching and Learning Services at McGill University.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

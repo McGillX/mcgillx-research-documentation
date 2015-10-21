@@ -20,13 +20,13 @@ Download the Course Package
 
 .. note::
 
-    Because we perform analysis post course offering we use the folder generated just after a courses end.
-
+    At McGillX we perform analysis post course offering and therefore use course data package generated just **after** a course has closed and certificates have been generated.
+    
 .. warning::
 
     The folder contains both edge and edx.org files.
 
-Downlaod the Tracking Logs
+Download the Tracking Logs
 --------------------------
 
 1. To access the tracking logs click "Go" from the top menu bar 
