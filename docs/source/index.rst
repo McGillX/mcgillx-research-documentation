@@ -17,7 +17,7 @@ Contents:
    :numbered:
    
    rstfiles/getting_started
-   rstfiles/populating_mongo_databases
+   rstfiles/setting_up_the_mongo_databases
    rstfiles/edx_data_download_and_decryption
    rstfiles/moocx
    rstfiles/extract_csv_datasets
@@ -32,17 +32,7 @@ The McGillX Research Platform (moocx) is underdevelopment. At present only repor
 Workflow Overview
 -----------------
 
-.. toctree::
-   :numbered:
-   :maxdepth: 1
-   :titlesonly:
-   
-   edx_data_download_and_decryption
-   populating_mongo_databases
-   moocx
-   extract_csv_datasets
-
-.. figure:: ../../../images/mcgillx-database-structure-and-workflow.png
+.. figure:: ../../images/mcgillx-database-structure-and-workflow.png
 
 Open Issues
 -----------
