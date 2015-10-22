@@ -17,8 +17,8 @@ Contents:
    :numbered:
    
    rstfiles/getting_started
-   rstfiles/setting_up_the_mongo_databases
    rstfiles/edx_data_download_and_decryption
+   rstfiles/setting_up_the_mongo_databases
    rstfiles/moocx
    rstfiles/extract_csv_datasets
 
