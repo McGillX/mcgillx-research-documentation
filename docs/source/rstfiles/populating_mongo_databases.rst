@@ -1,4 +1,4 @@
-Populating Mongo Database
+Setting the Mongo Database
 =========================
 
 McGillX Database Outline
