@@ -20,7 +20,7 @@ Contents:
    rstfiles/edx_data_download_and_decryption
    rstfiles/setting_up_the_mongo_databases
    rstfiles/moocx
-   rstfiles/extract_csv_datasets
+   rstfiles/moocx_report_generation
 
 Getting Started
 ===============
