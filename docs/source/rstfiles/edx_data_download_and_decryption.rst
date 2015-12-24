@@ -8,6 +8,8 @@ We use the file transfer client Cyberduck to access the amazon s3 server which
 3. In the new window that opens:
  1. Select S3 (Amazon Simple Storage Service) from the dropdown
  2. Enter the Access Key ID and Secret Access Key which has been provided to you by edX
+.. note::
+  edX will provide a gpg encrypted txt file containing both the Access Key ID and Secret Access Key
  3. Click connect
  
 Download the Course Package
