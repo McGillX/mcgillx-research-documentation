@@ -18,7 +18,6 @@ Contents:
    
    rstfiles/getting_started
    rstfiles/edx_data_download_and_decryption
-   rstfiles/setting_up_the_mongo_databases
    rstfiles/moocx
    rstfiles/moocx_data_parsing
    rstfiles/moocx_report_generation
@@ -29,7 +28,7 @@ Getting Started
 
 If you are hosting courses on edx.org, before starting the setup consult with edX to setup keys and credentials for data transfer.
 
-The McGillX Research Platform (moocx) is underdevelopment. At present only report generation (data exports) can be run from the moocx command line interface; all setup and import is still perform using individual scripts. Following the workflow below will walk you through downloading and decrypting data from edX, uploading it to a mongo database and installing the moocx python package for creating csv extracts for analysis.
+The McGillX Research Platform (moocx) is underdevelopment. At present it will assist in both setup of mongo databases as well as the generation of a handfull of report types. The workflow outlined in this documentation outlines how to download and decrypt data from edX, install the moocx python package, and setup a mongo database.
 
 Workflow Overview
 -----------------
