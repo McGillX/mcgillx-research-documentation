@@ -1,11 +1,6 @@
 MOOCX
 ======
 
-We are currently working towards an installable package. 
-Users will be able to execute the input and output of data from the commandline.
-
-.. important:: All database setup needs to be executed using individual python scripts and import commands outlined in this documentation. At the moment MOOCX can only generate a few csv reports.
-
 Installation
 ------------
 
