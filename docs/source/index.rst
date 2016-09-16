@@ -21,6 +21,7 @@ Contents:
    rstfiles/moocx
    rstfiles/moocx_data_parsing
    rstfiles/moocx_report_generation
+   rstfiles/edx_relational_db_migration
    
 
 Getting Started
