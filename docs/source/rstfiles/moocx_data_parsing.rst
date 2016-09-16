@@ -1,4 +1,4 @@
-MOOCx Report Generation
+MOOCx Data Parsing
 =======================
 
 .. warning::
