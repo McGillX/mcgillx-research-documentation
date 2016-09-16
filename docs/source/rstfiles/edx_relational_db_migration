@@ -1,4 +1,52 @@
+Migration to MySql
+=================================================
+
 Documentation for moving the McGillx reserach data to a relational db.
 We used mysql (since its free) but the mechanism for any other db should be similar.
 
 All code is in C# and will be make available on the github at a later date.
+
+
+Constructing the db
+===============
+
+Uploading sql files
+===============
+
+Uploading JSON files
+===============
+The section will detail how we parsed speficic event types in the JSON files from the tracking logs.
+
+Video events
+===========
+In video events, we dealt with the following event types:
+
+edx.video.closed_captions.hidden
+edx.video.closed_captions.shown 
+hide_transcript 
+load_video
+pause_video             
+play_video                
+seek_video             
+show_transcript         
+speed_change_video      
+stop_video            
+video_hide_cc_menu      
+video_show_cc_menu  
+
+Forum events
+===========
+In discussion forum events, we dealt with the following event types:
+
+edx.forum.response.created
+edx.forum.comment.created
+edx.forum.thread.created 
+edx.forum.response.voted
+edx.forum.thread.voted  
+edx.forum.searched
+
+Problem events
+===========
+In problem events, we have only dealt with the following event type:
+
+problem_check
