@@ -112,4 +112,4 @@ Below is a detailed sketch of the four tables involved in storing the problem_ch
 Note that we define a *problem* as a non-empty set of questions which has a single 'submit' or 'check' button.
 Every question belongs to a problem. A problem might have many questions.
 
-.. figure:: ../../images/problem_check_sketch.png
+.. figure:: ../../../images/problem_check_sketch.png
