@@ -10,42 +10,42 @@ Constructing the db
 -------------------------------
 Here is a list of the tables present in our database in alphabetical order.
 
--all_logs
--auth_user
--auth_userprofile
--certificates_generatedcertificates
--courses
--courseware_studentmodule
--forum_searched
--forum_text_created
--forum_text_voted
--problem_definition
--problem_submission
--question_definition
--question_submission
--student_anonymoususerid
--student_courseenrollment
--student_languageproficiency
--teams
--teams_membership
--user_id_map
--video_events
+- all_logs
+- auth_user
+- auth_userprofile
+- certificates_generatedcertificates
+- courses
+- courseware_studentmodule
+- forum_searched
+- forum_text_created
+- forum_text_voted
+- problem_definition
+- problem_submission
+- question_definition
+- question_submission
+- student_anonymoususerid
+- student_courseenrollment
+- student_languageproficiency
+- teams
+- teams_membership
+- user_id_map
+- video_events
 
 Note that McGill offers several courses every year, and often re-offers the same course over the years. As such, we manually created  the courses table to hold the course ids for each course.
 This has been very helpful in ensuring that each uploaded log has a valid course id with it (much of the data from edx is incomplete or otherwise garbled).
 Our courses table has the following format:
 
-=========    ================== 
+=========   ================== 
 Field           Type   
-=========    ===================
+=========   ==================
 id            vachar(255)
-offering       tinyint(4)
+offering      tinyint(4)
 code          varchar(20)
 title         varchar(255)
-term           varchar(200
-startDate      date
-endDate         date
-==========   ====================
+term          varchar(200
+startDate     date
+endDate       date
+=========   ==================
 
 A sample entry might look like:
 
@@ -77,35 +77,35 @@ Video events
 --------------------------
 In video events, we dealt with the following event types:
 
-edx.video.closed_captions.hidden
-edx.video.closed_captions.shown 
-hide_transcript 
-load_video
-pause_video             
-play_video                
-seek_video             
-show_transcript         
-speed_change_video      
-stop_video            
-video_hide_cc_menu      
-video_show_cc_menu  
+- edx.video.closed_captions.hidden
+- edx.video.closed_captions.shown 
+- hide_transcript 
+- load_video
+- pause_video             
+- play_video                
+- seek_video             
+- show_transcript         
+- speed_change_video      
+- stop_video            
+- video_hide_cc_menu      
+- video_show_cc_menu  
 
 Forum events
 ------------------
 In discussion forum events, we dealt with the following event types:
 
-edx.forum.response.created
-edx.forum.comment.created
-edx.forum.thread.created 
-edx.forum.response.voted
-edx.forum.thread.voted  
-edx.forum.searched
+- edx.forum.response.created
+- edx.forum.comment.created
+- edx.forum.thread.created 
+- edx.forum.response.voted
+- edx.forum.thread.voted  
+- edx.forum.searched
 
 Problem events
 -----------------------------
 In problem events, we have only dealt with the following event type:
 
-problem_check
+- problem_check
 
 Below is a detailed sketch of the four tables involved in storing the problem_check details. 
 Note that we define a *problem* as a non-empty set of questions which has a single 'submit' or 'check' button.
