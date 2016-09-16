@@ -1,0 +1,4 @@
+Documentation for moving the McGillx reserach data to a relational db.
+We used mysql (since its free) but the mechanism for any other db should be similar.
+
+All code is in C# and will be make available on the github at a later date.
