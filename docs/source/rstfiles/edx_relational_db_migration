@@ -50,3 +50,9 @@ Problem events
 In problem events, we have only dealt with the following event type:
 
 problem_check
+
+Below is a detailed sketch of the four tables involved in storing the problem_check details. 
+Note that we define a *problem* as a non-empty set of questions which has a single 'submit' or 'check' button.
+Every question belongs to a problem. A problem might have many questions.
+
+.. figure:: ../../images/problem_check_sketch.png
