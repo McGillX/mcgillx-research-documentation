@@ -18,10 +18,11 @@ Contents:
    
    rstfiles/getting_started
    rstfiles/edx_data_download_and_decryption
+   rstfiles/edx_relational_db_migration
    rstfiles/moocx
    rstfiles/moocx_data_parsing
    rstfiles/moocx_report_generation
-   rstfiles/edx_relational_db_migration
+   
    
 
 Getting Started
