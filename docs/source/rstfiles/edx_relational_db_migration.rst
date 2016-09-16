@@ -62,7 +62,16 @@ Once you have downloaded and decrypted the datapackage with the sql files, you a
 The precise syntax for table creation and file uploads will likely depend on which database management system you are using. 
 If you are using MySql, you can upload each file by using the *load data local infile* command. An example is shown below for the auth_user table.
 
-``load data local infile 'pathTofile/auth_user.sql' into table auth_user FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n'  IGNORE 1 LINES (id,username,first_name,last_name,email,password,is_staff,is_active,is_superuser,last_login,date_joined,status,email_key,avatar_typ,country,show_country,date_of_birth,interesting_tags,ignored_tags,email_tag_filter_strategy,display_tag_filter_strategy,consecutive_days_visit_count,course_id) SET course_id='McGillX/CHEM181x_2/3T2014';``
+.. code:: mysql
+
+  load data local infile 'pathTofile/auth_user.sql' into table auth_user 
+  FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n'  
+  IGNORE 1 LINES (id,username,first_name,last_name,email,
+  password,is_staff,is_active,is_superuser,last_login,date_joined,
+  status,email_key,avatar_typ,country,show_country,date_of_birth,
+  interesting_tags,ignored_tags,email_tag_filter_strategy,
+  display_tag_filter_strategy,consecutive_days_visit_count,course_id) 
+  SET course_id='McGillX/CHEM181x_2/3T2014';
 
 Since not all of the files provided by edx have a courses column, we added that ourselves. Be sure to first add the column in the table. Then, when you upload the file, you can set the value for each course using the SET command.
 
