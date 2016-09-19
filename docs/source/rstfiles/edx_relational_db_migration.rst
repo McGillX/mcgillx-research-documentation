@@ -33,7 +33,7 @@ Here is a list of the tables present in our database in alphabetical order.
 
 Note that McGill offers several courses every year, and often re-offers the same course over the years. As such, we manually created  the courses table to hold the course ids for each course.
 This has been very helpful in ensuring that each uploaded log has a valid course id with it (much of the data from edx is incomplete or otherwise garbled).
-Our courses table has the following format:
+Our *courses* table has the following format:
 
 =========   ================== 
 Field           Type   
@@ -56,6 +56,8 @@ This entry describes the third offering of the course titled Natural Disasters.
 The id for this course is course-v1:McGillX+ATOC185x+1T2016.
 
 The course code is ATOC185x, and it was offered in the winter term of 2016. It started on January 13, and ended on April 8. 
+
+The course_id field in all other tables is a foreign key to the id field of the courses table.
 
 Uploading sql files
 -----------------------
@@ -132,6 +134,30 @@ The parent classes for the various supported video events are: VideoSeek, VideoS
 
 The data from all video events are inserted into the video_event table. However, we need separate classes because not all events have the same fields. The VideoSeek class supposrts the seek_video event. The VideoSpeed class supports the speed_change_video event. The VideoLoad class supports the load_video event type. all other event types listed above are supported via the VideoOther class. 
 
+Our *video_events* table has the following format:
+
+===========================     ======================================================== 
+Field                             Type   
+===========================     ========================================================
+id                                int(11) auto-increment
+event_type                        varchar(45)
+path                              text
+user_id                           int(11)
+code                              varchar(45)
+currentTime                       float
+module_id                         varchar(255)
+new_time                          int(11)
+old_time                          int(11)
+new_speed                         enum('0.25','0.50','0.75','1.0','1.25','1.50','2.0')
+old_speed                         enum('0.25','0.50','0.75','1.0','1.25','1.50','2.0')
+time_event_emitted                datetime(6)
+course_id                         varchar(255)
+===========================     ========================================================
+
+Note: if using a DBMS that does not have an enum or similar type, any floating point type should suffice. Enum was used because there is a small number of possible speeds to which a video can be set. 
+
+The new_time and old_time fields are only not-null for the seek_video event_type. The new_speed and old_speed are only not null for the speed_change_video event type. currentTime is null for seek_video and load_video. 
+
 Forum events
 ^^^^^^^^^^^^^^^^^^^^^^^
 In discussion forum events, we dealt with the following event types:
@@ -149,6 +175,60 @@ The forums events are stored in three tables: one for *.voted, one for *.created
 - DiscussionVote - data to insert in forum_text_created
 - DiscussionText - date to insert in forum_text_voted
 
+Our *forum_searched* table has the following format:
+
+===========================     ======================================================== 
+Field                             Type   
+===========================     ========================================================
+id                                int(11) auto-increment
+event_type                        varchar(45)
+time_event_emitted                datetime(6)
+query                             text
+total_results                     int(11)
+corrected_text                    text  
+user_id                           int(11)
+course_id                         varchar(255)
+===========================     ========================================================
+
+Our *forum_text_voted* table has the following format:
+
+===========================     ======================================================== 
+Field                             Type   
+===========================     ========================================================
+id                                int(11) auto-increment
+event_type                        varchar(45)
+category_id                       varchar(45)
+category_name                     text
+undo_vote                         tinyint(1)
+time_event_emitted                datetime(6)
+user_id                           int(11)
+course_id                         varchar(255)
+===========================     ========================================================
+
+Our *forum_text_created* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11) auto-increment
+event_type                        varchar(45)
+anonymous                         tinyint(1)
+anonymous_to_peers                tinyint(1)
+body                              text
+category_id                       varchar(45)
+category_name                     text
+followed                          tinyint(1)
+thread_type                       varchar(45)
+title                             varchar(45)
+user_course_role                  set('Instructor','Staff','beta_testers') 
+user_forum_role                   set('Student','Community TA','Moderator','Administrator')
+response_id                       varchar(45)
+discussion_id                     varchar(45)
+time_event_emitted                datetime(6)
+user_id                           int(11)
+team_id                           varchar(45)
+course_id                         varchar(255)
+===========================     =============================================================
 
 Problem events
 ^^^^^^^^^^^^^^^^^^^^^^^
