@@ -53,7 +53,7 @@ A sample entry might look like:
 
 This entry describes the third offering of the course titled Natural Disasters. 
 
-The id for this course is course-v1:McGillX+ATOC185x+1T2016, and it was the third time we offered the course.
+The id for this course is course-v1:McGillX+ATOC185x+1T2016.
 
 The course code is ATOC185x, and it was offered in the winter term of 2016. It started on January 13, and ended on April 8. 
 
@@ -83,7 +83,33 @@ Uploading JSON files
 --------------------------------
 The section will detail how we parsed speficic event types in the JSON files from the tracking logs.
 
+The basic steps for parsing the JSON files and uploading various event types are:
 
+#. Define a class for each relvant Object in the JSON code. We didn't keep all fields in all event types, as they weren't all of interest. If you want to keep different fields, you would have to modify the appropriate class description at the beginning of the C# file. Note that the JSON code contains nested objects, so be careful to modify the correct class. 
+#. Once the class exists, it needs corresponding BuildObject method. There are several such methods in the code, and we need one per object. These methods take as input a single line of JSON text and extract and return the corresponding object. For example, BuildTrackingObjectVideoLoad returns a VideoLoad object. 
+#. In the ReadFile() method there is a switch statement based on the value of the static class variable EVENT_TYPE. Presently supported values are Discussion, Video, and Problem. A value of Discussion will upload supported forum events, Video will deal with video events, and Problem will deal with problem events (the only one presently supported is problem_check) - see sub-sections below for specific details. 
+
+General Notes:
+
+- Logs that throw an exception will be written to file and the code will continue to run
+- If the connection dies, the last known file and line numbers are written to file so that it can be started again in the correct place. 
+- On our systems, the way in which the files from 2015 onwards are stored is different from the way in which the older ones are stored. This is why you can see the following condition blocks in the code ::
+
+      foreach (int y in years)
+      {
+          year = y;
+          Console.WriteLine("Year " + year);
+          //2013, 2014 are stored differently. 
+          if (year > 2014)
+          {
+              Post2014Logs(year, cnn);
+          }
+          else
+          {
+              Pre2015Logs(year, cnn);
+          }
+      }
+  You likely will want to modify the paths in these methods to suit your own directory structures.
 
 Video events
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,6 +127,8 @@ In video events, we dealt with the following event types:
 - stop_video            
 - video_hide_cc_menu      
 - video_show_cc_menu  
+
+
 
 Forum events
 ^^^^^^^^^^^^^^^^^^^^^^^
