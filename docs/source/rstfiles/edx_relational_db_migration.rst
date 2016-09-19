@@ -181,7 +181,7 @@ Our *forum_searched* table has the following format:
 Field                             Type   
 ===========================     ========================================================
 id                                int(11) auto-increment
-event_type                        varchar(45)
+event_type                        varchar(255)
 time_event_emitted                datetime(6)
 query                             text
 total_results                     int(11)
@@ -196,7 +196,7 @@ Our *forum_text_voted* table has the following format:
 Field                             Type   
 ===========================     ========================================================
 id                                int(11) auto-increment
-event_type                        varchar(45)
+event_type                        varchar(255)
 category_id                       varchar(45)
 category_name                     text
 undo_vote                         tinyint(1)
@@ -210,8 +210,8 @@ Our *forum_text_created* table has the following format:
 ===========================     =============================================================
 Field                             Type   
 ===========================     =============================================================
-id                                int(11) auto-increment
-event_type                        varchar(45)
+id                                varchar(45)
+event_type                        varchar(255)
 anonymous                         tinyint(1)
 anonymous_to_peers                tinyint(1)
 body                              text
