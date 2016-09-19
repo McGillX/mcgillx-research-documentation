@@ -5,6 +5,8 @@ We used MySql (since it's free) but the mechanism for any other db should be sim
 
 All code for migrating JSON to mysql is in C# and will be made available on our github at a later date.
 
+We will also upload (on github) some possibly useful mysql queries used for data generation. 
+
 
 Constructing the db
 -------------------------------
