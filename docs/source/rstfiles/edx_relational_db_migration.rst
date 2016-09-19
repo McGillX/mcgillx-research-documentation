@@ -128,7 +128,9 @@ In video events, we dealt with the following event types:
 - video_hide_cc_menu      
 - video_show_cc_menu  
 
+The parent classes for the various supported video events are: VideoSeek, VideoSpeed, VideoLoad, and VideoOther
 
+The data from all video events are inserted into the video_event table. However, we need separate classes because not all events have the same fields. The VideoSeek class supposrts the seek_video event. The VideoSpeed class supports the speed_change_video event. The VideoLoad class supports the load_video event type. all other event types listed above are supported via the VideoOther class. 
 
 Forum events
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -141,6 +143,13 @@ In discussion forum events, we dealt with the following event types:
 - edx.forum.thread.voted  
 - edx.forum.searched
 
+The forums events are stored in three tables: one for *.voted, one for *.created, and one for *.searched. The parent classes for each of those three object types are:
+
+- DiscussionSearch - data to insert in forum_searched
+- DiscussionVote - data to insert in forum_text_created
+- DiscussionText - date to insert in forum_text_voted
+
+
 Problem events
 ^^^^^^^^^^^^^^^^^^^^^^^
 In problem events, we have only dealt with the following event type:
@@ -152,3 +161,7 @@ Note that we define a *problem* as a non-empty set of questions which has a sing
 Every question belongs to a problem. A problem might have many questions.
 
 .. figure:: ../../../images/problem_check_sketch.png
+
+The main class for problem_check events is ProblemCheck. The BuildTrackingObjectProblem method is more involved than all of the other BuildObject methods as many of the fields in the problem_check event are simple list or dictionary types. These have to be parsed in a more involved manner than simply serializing the JSON string. 
+
+Due to how the foreign keys are set up in the database, it is important to first insert problem definitions, then either problem submissions and question definitions (in either order) and question submissions last. 
