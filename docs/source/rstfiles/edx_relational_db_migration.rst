@@ -1,7 +1,7 @@
 Migration to MySql
 ==================================
-Documentation for moving the McGillx reserach data to a relational db.
-We used mysql (since its free) but the mechanism for any other db should be similar.
+Documentation for moving the McGillx reserach data to a relational database.
+We used MySql (since it's free) but the mechanism for any other db should be similar. Note that older versions of MySql do not have the datetime(6) type. If you're using an older version, you can use datetime instead, but you will lose the full timestamp (it will truncate to the nearest second). 
 
 All code for migrating JSON to mysql is in C# and will be made available on our github at a later date.
 
@@ -49,9 +49,12 @@ endDate       date
 
 A sample entry might look like:
 
-course-v1:McGillX+ATOC185x+1T2016  3 ATOC185x Natural Disasters  1T2016 2016-01-13 2016-04-08
+``course-v1:McGillX+ATOC185x+1T2016 | 3 | ATOC185x | Natural Disasters | 1T2016 | 2016-01-13 | 2016-04-08``
 
-This entry describes the third offering of the course titled Natural Disasters. The id for this course is course-v1:McGillX+ATOC185x+1T2016.
+This entry describes the third offering of the course titled Natural Disasters. 
+
+The id for this course is course-v1:McGillX+ATOC185x+1T2016, and it was the third time we offered the course.
+
 The course code is ATOC185x, and it was offered in the winter term of 2016. It started on January 13, and ended on April 8. 
 
 Uploading sql files
@@ -73,7 +76,7 @@ If you are using MySql, you can upload each file by using the *load data local i
   display_tag_filter_strategy,consecutive_days_visit_count,course_id) 
   SET course_id='McGillX/CHEM181x_2/3T2014';
 
-Since not all of the files provided by edx have a courses column, we added that ourselves. Be sure to first add the column in the table. Then, when you upload the file, you can set the value for each course using the SET command.
+Since not all of the files provided by edx have a courses column, we added that ourselves. Be sure to add the extra column in the table when you create it. Then, when you upload the date, you can set the value for each course simultaneously using the SET command.
 
 
 Uploading JSON files
@@ -83,7 +86,7 @@ The section will detail how we parsed speficic event types in the JSON files fro
 
 
 Video events
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 In video events, we dealt with the following event types:
 
 - edx.video.closed_captions.hidden
@@ -100,7 +103,7 @@ In video events, we dealt with the following event types:
 - video_show_cc_menu  
 
 Forum events
-------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 In discussion forum events, we dealt with the following event types:
 
 - edx.forum.response.created
@@ -111,7 +114,7 @@ In discussion forum events, we dealt with the following event types:
 - edx.forum.searched
 
 Problem events
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 In problem events, we have only dealt with the following event type:
 
 - problem_check
