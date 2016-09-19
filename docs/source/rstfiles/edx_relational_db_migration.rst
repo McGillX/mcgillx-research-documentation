@@ -164,4 +164,4 @@ Every question belongs to a problem. A problem might have many questions.
 
 The main class for problem_check events is ProblemCheck. The BuildTrackingObjectProblem method is more involved than all of the other BuildObject methods as many of the fields in the problem_check event are simple list or dictionary types. These have to be parsed in a more involved manner than simply serializing the JSON string. 
 
-Due to how the foreign keys are set up in the database, it is important to first insert problem definitions, then either problem submissions and question definitions (in either order) and question submissions last. 
+Due to how the foreign keys are set up in the database, it is important to first insert problem definitions, then problem submissions and question definitions (in either order) and question submissions last. 
