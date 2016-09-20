@@ -245,6 +245,64 @@ Every question belongs to a problem. A problem might have many questions.
 
 .. figure:: ../../../images/problem_check_sketch.png
 
+Our *problem_definition* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                varchar(255)
+path                              text
+course_id                         varchar(255)
+max_grade                         float
+module_id                         varchar(255)
+display_name                      text
+===========================     =============================================================
+
+Our *problem_submission* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11) auto increment
+problem_id                        varchar(25)
+attempt_number                    smallint(6)
+user_id                           int(11)
+grade                             float
+time_event_emitted                datetime(6)
+machine_type                      varchar(45)
+===========================     =============================================================
+
+Notes: The machine_type field is used to distinguish between operating systems, as well as between mobile/tablet/pc users.
+
+Our *question_definition* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                varchar(255)
+input_type                        varchar(45)
+response_type                     varchar(45)
+question_text                     text
+problem_id                        varchar(255)
+===========================     =============================================================
+
+Notes: input_type includes: choicegroup, textline, optioninput, etc. response_type includes multiplechoiceresponse, stringresponse, optionresponse etc. 
+
+Our *question_submission* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11) auto increment
+quesiton_id                       varchar(255)
+answers                           text
+submissions                       text
+correctionness                    enum('correct','incorrect','partially-correct')
+problem_submisison_id             int(11)
+===========================     =============================================================
+
+Notes: answers will include things like 'choice_0', whereas submissions will contain the text value of choice_0 (eg, agree). 
+
 The main class for problem_check events is ProblemCheck. The BuildTrackingObjectProblem method is more involved than all of the other BuildObject methods as many of the fields in the problem_check event are simple list or dictionary types. These have to be parsed in a more involved manner than simply serializing the JSON string. 
 
 Due to how the foreign keys are set up in the database, it is important to first insert problem definitions, then problem submissions and question definitions (in either order) and question submissions last. 
