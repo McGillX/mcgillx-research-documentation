@@ -80,7 +80,7 @@ If you are using MySql, you can upload each file by using the *load data local i
   display_tag_filter_strategy,consecutive_days_visit_count,course_id) 
   SET course_id='McGillX/CHEM181x_2/3T2014';
 
-Since not all of the files provided by edx have a courses column, we added that ourselves. Be sure to add the extra column in the table when you create it. Then, when you upload the date, you can set the value for each course simultaneously using the SET command.
+Since not all of the files provided by edx have a courses column, we added that ourselves. Be sure to add the extra column in the table when you create it. Then, when you upload the date, you can set the value for each course simultaneously using the SET command. Note that although a user might be registered in multiple courses, they can only appear in this table once. As such, whatever course_id value that user gets assigned will be the *first* course in which they are enrolled (assuming the data is loaded in chronological order). 
 
 
 Uploading JSON files
@@ -308,3 +308,29 @@ The main class for problem_check events is ProblemCheck. The BuildTrackingObject
 Due to how the foreign keys are set up in the database, it is important to first insert problem definitions, then problem submissions and question definitions (in either order) and question submissions last. 
 
 The inserts for question and problem definitions are done a little differently. In order to avoid inserting the same definition every time a student completes a problem, we build hashmaps (keys are compared based on problem/quesiton ids) and then insert at the end - normal inserts are done after every line. 
+
+Poll events
+^^^^^^^^^^^^^^^^^^^^^^^
+
+For poll event logs, we examined the event type *xblock.poll.submitted*. Polls are an advanced problem type with full support on the edx platform. The *poll_submissions* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11) auto increment
+user_id                           int(11)
+course_id                         varchar(255)
+choice                            text
+display_name                      text
+url_name                          varchar(255)
+usage_key                         varchar(255)
+time_event_emitted                datetime(6)
+path                              varchar(255)
+===========================     =============================================================
+
+A sample entry might look like: 
+
+``1 | 2862119 | course-v1:McGillX+GROOCx+T3_2015 | B      | Poll         | 5455f167adb241e583f3462976e77057 | block-v1:McGillX+GROOCx+T3_2015+type@poll+block@5455f167adb241e583f3462976e77057 | 2015-09-21 11:14:                          57.376300 | /courses/course-v1:McGillX+GROOCx+T3_2015/xblock/block-v1:McGillX+GROOCx+T3_2015+type@poll+block@5455f167adb241e583f3462976e77057/handler/vote |``
+
+Note that the usage_key field is a module_id as described in the courseware_studentmodule table. 
+
