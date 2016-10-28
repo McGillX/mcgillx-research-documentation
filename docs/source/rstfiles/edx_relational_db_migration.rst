@@ -18,14 +18,21 @@ Here is a list of the tables present in our database in alphabetical order.
 - certificates_generatedcertificates
 - courses
 - courseware_studentmodule
+- discussion_endorsement                   
+- discussion_post                    
+- discussion_thread
+- discussion_vote 
+- django_comment_client_role_users
 - forum_searched
 - forum_text_created
 - forum_text_voted
+- poll_submissions
 - problem_definition
 - problem_submission
 - question_definition
 - question_submission
 - student_anonymoususerid
+- student_courseaccessrole
 - student_courseenrollment
 - student_languageproficiency
 - teams
@@ -64,7 +71,6 @@ The course_id field in all other tables is a foreign key to the id field of the 
 Uploading sql files
 -----------------------
 
-
 Once you have downloaded and decrypted the datapackage with the sql files, you are ready to create the tables and upload the files to your database.
 The precise syntax for table creation and file uploads will likely depend on which database management system you are using. 
 If you are using MySql, you can upload each file by using the *load data local infile* command. An example is shown below for the auth_user table.
@@ -80,8 +86,12 @@ If you are using MySql, you can upload each file by using the *load data local i
   display_tag_filter_strategy,consecutive_days_visit_count,course_id) 
   SET course_id='McGillX/CHEM181x_2/3T2014';
 
-Since not all of the files provided by edx have a courses column, we added that ourselves. Be sure to add the extra column in the table when you create it. Then, when you upload the date, you can set the value for each course simultaneously using the SET command. Note that although a user might be registered in multiple courses, they can only appear in this table once. As such, whatever course_id value that user gets assigned will be the *first* course in which they are enrolled (assuming the data is loaded in chronological order). 
+Since not all of the files provided by edx have a courses column, we added that ourselves. Be sure to add the extra column in the table when you create it. Then, when you upload the date, you can set the value for each course simultaneously using the SET command. Note that although a user might be registered in multiple courses, they can only appear in this table once. As such, whatever course_id value that user gets assigned will be the *first* course in which they are enrolled (assuming the data is loaded in chronological order). Since we do not use the wiki tool in edx, the related tables are absent in our db (since they are empty). If you use that tool your database will have additional tables.
 
+Update: At the end of October 2016, edx added two new tables: django_comment_client_role_users, and student_courseaccessrole. The first indicates all course user's roles on the discussion board, and the latter simply lists all staff, instructors, and beta testers for each course. This is *extremely* helpful, as now if you want to only include students in any query, you can simple add the following WHERE clause to all queries:
+
+.. code:: mysql
+  WHERE user_id NOT IN (SELECT user_id FROM student_courseaccessrole;
 
 Uploading JSON files
 --------------------------------
@@ -330,7 +340,14 @@ path                              varchar(255)
 
 A sample entry might look like: 
 
-``1 | 2862119 | course-v1:McGillX+GROOCx+T3_2015 | B      | Poll         | 5455f167adb241e583f3462976e77057 | block-v1:McGillX+GROOCx+T3_2015+type@poll+block@5455f167adb241e583f3462976e77057 | 2015-09-21 11:14:                          57.376300 | /courses/course-v1:McGillX+GROOCx+T3_2015/xblock/block-v1:McGillX+GROOCx+T3_2015+type@poll+block@5455f167adb241e583f3462976e77057/handler/vote |``
+``1 | 2862119 | course-v1:McGillX+GROOCx+T3_2015 | B      | Poll         | 5455f167adb241e583f3462976e77057``
+``| block-v1:McGillX+GROOCx+T3_2015+type@poll+block@5455f167adb241e583f3462976e77057 | 2015-09-2111:14:57.376300``
+``| /courses/course-v1:McGillX+GROOCx+T3_2015/xblock/block-v1:McGillX+GROOCx+T3_2015+type@poll+block@5455f167adb241e583f3462976e77057/handler/vote |``
 
 Note that the usage_key field is a module_id as described in the courseware_studentmodule table. 
 
+Uploading Mongo Files
+------------------------
+Most of the information about the edx discussion posts is included in duplicate in the data packages: it is in the tracking logs, as well as in the .mongo files. See http://edx.readthedocs.io/projects/devdata/en/latest/internal_data_formats/discussion_data.html for details on the structure of the mongo files in your data download.
+
+In the interst of completeness, we included both sources of data in the database. The discussion logs from the tracking logs are stored in the tables with the prefix 'forum\_'. The discussion logs from the mongo files are stored in tables with the prefix 'discussion\_'. Note that when posts get deleted in the forum, there are not inlucded in the .mongo file since they are removed from the database. However, they will still appear in the tracking logs. That being said, there are presently small glitches in the edx export methodology, so it is normal that a small amount of posts appear in the .mongo files but do not appear as explicit events in the tracking logs (if you want to dig, you can find them as implicit events). 
