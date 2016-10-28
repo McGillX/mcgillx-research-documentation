@@ -336,7 +336,7 @@ url_name                          varchar(255)
 usage_key                         varchar(255)
 time_event_emitted                datetime(6)
 path                              varchar(255)
-===========================     =============================================================
+===========================     =============================================================*
 
 A sample entry might look like: 
 
@@ -351,3 +351,63 @@ Uploading Mongo Files
 Most of the information about the edx discussion posts is included in duplicate in the data packages: it is in the tracking logs, as well as in the .mongo files. See http://edx.readthedocs.io/projects/devdata/en/latest/internal_data_formats/discussion_data.html for details on the structure of the mongo files in your data download.
 
 In the interst of completeness, we included both sources of data in the database. The discussion logs from the tracking logs are stored in the tables with the prefix 'forum\_'. The discussion logs from the mongo files are stored in tables with the prefix 'discussion\_'. Note that when posts get deleted in the forum, there are not inlucded in the .mongo file since they are removed from the database. However, they will still appear in the tracking logs. That being said, there are presently small glitches in the edx export methodology, so it is normal that a small amount of posts appear in the .mongo files but do not appear as explicit events in the tracking logs (if you want to dig, you can find them as implicit events). 
+
+A sketch of the structure of the relationship between the tables for this dataset is shown below:
+.. figure:: ../../../images/updatedDiscussionv2.png
+
+The above schema contains four tables. The *discussion_thread* table is used to describe a parent thread. Every thread id will have at least one log in the *discussion_post* table associated with it. There is a post that contains the body and other information for the original thread, and there may also be posts corresponding to responses and comments. Responses can be endorsed my moderators as either correct answers to questions or quality contributions to discussions. If the *endorsed* attribute is true, then the post should have a corresponding entry in the *discussion_endorsement* table. Finally, both threads and responses can be 'upvoted'. All upvotes are documented in the *discussion_vote* table. 
+
+Details of all the discussion table formats are below
+
+Our *discussion_thread* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                varchar(255)
+closed                            tinyint(1)
+last_activity_at                  datetime(6)
+commentatble_id                   varchar(255)
+title                             text
+thread_type                       enum('discussion','question')
+course_id                         varchar(255)
+===========================     =============================================================
+
+Our *discussion_post* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                varchar(255)
+user_id                           int(11)
+anonymous                         tinyint(1)
+anonymous_to_peers                tinyint(1)
+body                              text
+created_at                        datetime(6)
+updated_at                        datetime(6)
+endorsed                          tinyint(1)
+post_id                           varchar(255) <- fkey to self.
+thread_id                         varchar(255)
+type                              enum('thread','response','comment') 
+===========================     =============================================================
+
+
+Our *discussion_endorsement* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+post_id                           varchar(255)
+endorsed_at                       datetime(6)
+endorsed_by                       int(11)
+===========================     =============================================================
+
+
+Our *discussion_vote* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+post_id                           varchar(255)
+user_id                           int(11)
+===========================     =============================================================
