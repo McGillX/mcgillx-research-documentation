@@ -336,7 +336,7 @@ url_name                          varchar(255)
 usage_key                         varchar(255)
 time_event_emitted                datetime(6)
 path                              varchar(255)
-===========================     =============================================================*
+===========================     =============================================================
 
 A sample entry might look like: 
 
@@ -348,11 +348,12 @@ Note that the usage_key field is a module_id as described in the courseware_stud
 
 Uploading Mongo Files
 ------------------------
-Most of the information about the edx discussion posts is included in duplicate in the data packages: it is in the tracking logs, as well as in the .mongo files. See http://edx.readthedocs.io/projects/devdata/en/latest/internal_data_formats/discussion_data.html for details on the structure of the mongo files in your data download.
+Most of the information about the edx discussion posts is included in duplicate in the data packages: it is in the tracking logs, as well as in the .mongo files. See the edx documentation for details on the structure of the mongo files in your data download.
 
 In the interst of completeness, we included both sources of data in the database. The discussion logs from the tracking logs are stored in the tables with the prefix 'forum\_'. The discussion logs from the mongo files are stored in tables with the prefix 'discussion\_'. Note that when posts get deleted in the forum, there are not inlucded in the .mongo file since they are removed from the database. However, they will still appear in the tracking logs. That being said, there are presently small glitches in the edx export methodology, so it is normal that a small amount of posts appear in the .mongo files but do not appear as explicit events in the tracking logs (if you want to dig, you can find them as implicit events). 
 
 A sketch of the structure of the relationship between the tables for this dataset is shown below:
+
 .. figure:: ../../../images/updatedDiscussionv2.png
 
 The above schema contains four tables. The *discussion_thread* table is used to describe a parent thread. Every thread id will have at least one log in the *discussion_post* table associated with it. There is a post that contains the body and other information for the original thread, and there may also be posts corresponding to responses and comments. Responses can be endorsed my moderators as either correct answers to questions or quality contributions to discussions. If the *endorsed* attribute is true, then the post should have a corresponding entry in the *discussion_endorsement* table. Finally, both threads and responses can be 'upvoted'. All upvotes are documented in the *discussion_vote* table. 
