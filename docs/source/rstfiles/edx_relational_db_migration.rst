@@ -22,6 +22,7 @@ Here is a list of the tables present in our database in alphabetical order.
 - discussion_post                    
 - discussion_thread
 - discussion_vote 
+- discussion_view
 - django_comment_client_role_users
 - forum_searched
 - forum_text_created
@@ -346,6 +347,21 @@ A sample entry might look like:
 
 Note that the usage_key field is a module_id as described in the courseware_studentmodule table. 
 
+Implicit Events
+^^^^^^^^^^^^^^^^^^^^^^^
+You may have noticed that most of the entries in your tracking logs have an event type that looks more like a url than anything else. These are classified by edx as implicit events and, as far as we know, very little work has been done with them. However, you might also have noticed, that none of the explicit events describe what we will call `discussion views'. In addition to knowing when a learner makes a post, we would also ideally like to be able to know when they read a post. In order to track down this information, we had to dig into the implicit events. 
+
+The first issue to tackle is that of deciding what it means for a student to `read' a discussion post. Since `comments', `replies', and `threads' are all displayed on the same webpage, the best we can do is check when a student looked at a `thread'. This, combined with a timestamp, is sufficient to deduce which `comments' and `replies' were also on the page at that time.
+
+A more thorough investigation would require that a minimum amount of time is spent on the thread's page before it qualifies as being read. However, at this point, we will define a Discussion View event as whenever a student visits the webpage of a course thread, no matter how brief that visit. In order to isolte these events from the tracking logs, and insert them into a 'discussion_view' table, we used the following query:
+
+.. code:: mysql
+  INSERT INTO discussion_view (course_id, user_id, time_event_emitted, thread_id)
+  SELECT course_id, user_id, time_event_emitted, RIGHT(event_type, 24) FROM all_logs
+  WHERE event_type LIKE '%/discussion/forum/%/threads/%' AND NOT user_id IS NULL AND NOT page_url IS NULL;
+
+If you look at the 'event_type' fields that contain the specified substring, you can see that the last 24 characters are discussion thread id's. 
+
 Uploading Mongo Files
 ------------------------
 Most of the information about the edx discussion posts is included in duplicate in the data packages: it is in the tracking logs, as well as in the .mongo files. See the edx documentation for details on the structure of the mongo files in your data download.
@@ -358,7 +374,7 @@ A sketch of the structure of the relationship between the tables for this datase
 
 The above schema contains four tables. The *discussion_thread* table is used to describe a parent thread. Every thread id will have at least one log in the *discussion_post* table associated with it. There is a post that contains the body and other information for the original thread, and there may also be posts corresponding to responses and comments. Responses can be endorsed my moderators as either correct answers to questions or quality contributions to discussions. If the *endorsed* attribute is true, then the post should have a corresponding entry in the *discussion_endorsement* table. Finally, both threads and responses can be 'upvoted'. All upvotes are documented in the *discussion_vote* table. 
 
-Details of all the discussion table formats are below
+Details of these discussion table formats are below
 
 Our *discussion_thread* table has the following format:
 
