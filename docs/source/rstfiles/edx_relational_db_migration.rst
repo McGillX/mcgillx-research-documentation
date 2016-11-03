@@ -356,6 +356,7 @@ The first issue to tackle is that of deciding what it means for a student to `re
 A more thorough investigation would require that a minimum amount of time is spent on the thread's page before it qualifies as being read. However, at this point, we will define a Discussion View event as whenever a student visits the webpage of a course thread, no matter how brief that visit. In order to isolte these events from the tracking logs, and insert them into a 'discussion_view' table, we used the following query:
 
 .. code:: mysql
+
   INSERT INTO discussion_view (course_id, user_id, time_event_emitted, thread_id)
   SELECT course_id, user_id, time_event_emitted, RIGHT(event_type, 24) FROM all_logs
   WHERE event_type LIKE '%/discussion/forum/%/threads/%' AND NOT user_id IS NULL AND NOT page_url IS NULL;
