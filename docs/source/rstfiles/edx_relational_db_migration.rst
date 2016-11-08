@@ -363,6 +363,19 @@ A more thorough investigation would require that a minimum amount of time is spe
 
 If you look at the 'event_type' fields that contain the specified substring, you can see that the last 24 characters are discussion thread id's. 
 
+Given that the above is the only informaion we could extract at this point, our *discussion_view* table has the following format:
+
+
+===========================     =================================
+Field                             Type   
+===========================     =================================
+id                                int(11) auto increment
+course_id                         varchar(255)
+user_id                           int(11)
+time_event_emitted                datetime(6)
+thread_id                         varchar(45)
+===========================     =================================
+
 Uploading Mongo Files
 ------------------------
 Most of the information about the edx discussion posts is included in duplicate in the data packages: it is in the tracking logs, as well as in the .mongo files. See the edx documentation for details on the structure of the mongo files in your data download.
