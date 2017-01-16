@@ -103,6 +103,8 @@ Course Structure
 ------------------
 The course structure files were uploaded into the course_module table. Each of these files contains a dictionary of all of the pieces in the coruse. They keys are the id of the course module being describe, and the value is a tuple: (category, children, metadata). The category is one of the values on the tree shown below (note that there are more possible categories at the leaf level than those listed). A chapter corresponds to a *section* in studio. A sequential is a *subsection*, a vertical is a *unit*, and the leaves are *components*. The children are lists of child id's. The course will have a list of chapter ids, each chapter will have a list of sequential ids, etc. The contents of the metadata varies highly depending on the category. We have included in our table only the metadata that we deem relevant. You might want to store more or less information depending on your needs. 
 
+The relevant code is in the ReadCourseStructures method in the Program.cs file. It assumes all of the course_structure files are in the same location (passed as method input). Due to the way in which the data is stored, it first constructs a course module object *without its id*, and then iterates through the dictionary, adding the id (key) to each BaseCourseModule object. 
+
 .. figure:: ../../../images/CourseStructure.png
 
 Our *course_module* table has the following format:
