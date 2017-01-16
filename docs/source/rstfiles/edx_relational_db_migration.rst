@@ -16,6 +16,7 @@ Here is a list of the tables present in our database in alphabetical order.
 - auth_user
 - auth_userprofile
 - certificates_generatedcertificates
+- course_module
 - courses
 - courseware_studentmodule
 - discussion_endorsement                   
@@ -96,6 +97,30 @@ Update: At the end of October 2016, edx added two new tables: django_comment_cli
 
 Uploading JSON files
 --------------------------------
+There are two types of JSON files included in the data dump: tracking logs, and files describing the course structure. 
+
+Course Structure
+------------------
+The course structure files were uploaded into the course_module table. Each of these files contains a dictionary of all of the pieces in the coruse. They keys are the id of the course module being describe, and the value is a tuple: (category, children, metadata). The category is one of the values on the tree shown below (note that there are more possible categories at the leaf level than those listed). A chapter corresponds to a *section* in studio. A sequential is a *subsection*, a vertical is a *unit*, and the leaves are *components*. The children are lists of child id's. The course will have a list of chapter ids, each chapter will have a list of sequential ids, etc. The contents of the metadata varies highly depending on the category. We have included in our table only the metadata that we deem relevant. You might want to store more or less information depending on your needs. 
+
+Our *course_module* table has the following format:
+
+===========================     ======================================================== 
+Field                             Type   
+===========================     ========================================================
+id                                varchar(255)
+category                          varchar(255)
+display_name                          varchar(255)
+start_date                          datetime(6)
+end_date                          datetime(6)
+due_date                          datetime(6)
+format                            varchar(255)
+graded                            tinyint(1)
+parent_course_module_id           varchar(255)
+===========================     ========================================================
+
+Tracking Logs
+------------------
 The section will detail how we parsed speficic event types in the JSON files from the tracking logs.
 
 The basic steps for parsing the JSON files and uploading various event types are:
