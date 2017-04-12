@@ -5,19 +5,22 @@ Note that the main method is in the **Program.cs** file. If you would like to si
 
 Program.cs
 -------------------------------
-This is the file that contains the Main method. It has three static attributes:
+This is the file that contains the Main method. It has several static attributes:
 
-* string EVENT_TYPE. This is supported for a small set of values, indicated in comments in the code. Supported options are: "None", "Discussion", "Video", "Problem_Submissions", "Problem_Definitions". At present, tables are populated one at a time, by topic. The event type chosen determines the table that will be popualted - logs of all other types are ignored. "None" indicates the `all_logs` table. 
+See the AppSettings.txt file included with the C# code for details on all of the private attributes. These are set in that file. 
+
+The two below are not obtained from the AppSettings file, but are populated in the code when someone selects the problem_definition event type. 
 *  HashSet<ProblemDefinition> allProblems. This keeps a set of all seen problem definitions. It then adds them to the table in bulk.
 *  HashSet<QuestionDefinition> allQuestion. This has the same function as above, except for quesitons.
 
-Presently in main, there are six statements, and all but one are commented out. It is a good idea to always being by executing the Connect() method to verify that you can, in fact, connect to your database. Inside this method, you have to manually set the values of the connectionString variable with your own database server location, name, username, and password. It presently contains dummy values.  Once that works, you can put that method call in a comment.
+The main method of this program reads its settings from file, and the executes a command based on the value of the choice attribute. 
 
-SetUpTrackingLogs() is the most often used method. It creates an array of years (we started in 2013 - you may want to update this array depending on when your courses started running), and then connects to the database. If the connection is successful, it then opens all tracking logs, one year at a time. The way in which we have the 2013,2014 files stored is different from the way in which the later files are stored, so you can see that there are two different methods to read the logs. If all of you files are  stored in the same way, you will only need one. 
+* test connection. This option just calls the connect() method to verify that the program can connect to the database.
+* discussion dump. This option reads the mongo discussion files provided by edx and populates the discussion tables in the database
+* course structure. This option reads the json course structure files provided by edx and populates the course_structure table.
+* logs. This option calls the etUpTrackingLogs() method. Inside the logs methods, we open all of the subdirectories and *sort*. Sorting is highly advisable - without this step, there is no way to know where you need to start from if your connection dies - it is *not* guaranteed that all files in a directory will be opened in the same order between runs of a program. This will then call the ReadFile method. This method reads all of the lines in a trackng log file, and calls a different method depending on the value of EVENT_TYPE. For example, if EVENT_TYPE has the value "Discussion", it will call the DiscussionLogs method. There, it will check if the log in question represents a discussion event and, if it does, what kind of discussion event. It then calls the appropriate method from the BuildingObjects class to obtain the object representation of the log, and then send it to the appropriate method in the AddToTable class. 
 
-Inside the logs methods, we open all of the subdirectories and *sort*. Sorting is highly advisable - without this step, there is no way to know where you need to start from if your connection dies - it is *not* guaranteed that all files in a directory will be opened in the same order between runs of a program. This will then call the ReadFile method. This method reads all of the lines in a trackng log file, and calls a different method depending on the value of EVENT_TYPE. For example, if EVENT_TYPE has the value "Discussion", it will call the DiscussionLogs method. There, it will check if the log in question represents a discussion event and, if it does, what kind of discussion event. It then calls the appropriate method from the BuildingObjects class to obtain the object representation of the log, and then send it to the appropriate method in the AddToTable class. 
-
-The methods for the various event types function in roughly the same way, except for ProblemLogs(). If the EVENT_TYPE is "Problem_Definitions", it will not immediately call an AddToTable method. Instead, it will call Create*Definitions and add to the Problem and Quesiton hashsets. At the end of the SetUpTrackingLogs() method, we can see that in the case of "Problem_Definitions", the last thing that happens is a call to both AddValues* methods in the AddToTable class. There, the contents of both hashsets will be inserted into their respective tables. 
+ The methods for the various event types function in roughly the same way, except for ProblemLogs(). If the EVENT_TYPE is "Problem_Definitions", it will not immediately call an AddToTable method. Instead, it will call Create*Definitions and add to the Problem and Quesiton hashsets. At the end of the SetUpTrackingLogs() method, we can see that in the case of "Problem_Definitions", the last thing that happens is a call to both AddValues* methods in the AddToTable class. There, the contents of both hashsets will be inserted into their respective tables. 
 
 Error Handling and Dead Connections
 ++++++++++++++++++++++++++++++++++++
@@ -56,7 +59,6 @@ This file contains a class that describes an edx course. This is no longer reall
 ProblemEvents.cs
 -------------------------------
 This file contains all of the class definitions related to the problem_check event. There are three main 'parent' types: **ProblemDefinition**, **QuestionDefinition**, and **ProblemCheck**. 
-
 
 DiscussionEvents.cs
 -------------------------------
