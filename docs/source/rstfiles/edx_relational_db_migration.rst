@@ -12,10 +12,11 @@ Constructing the db
 -------------------------------
 Here is a list of the tables present in our database in alphabetical order.
 
-- all_logs
 - auth_user
 - auth_userprofile
 - certificates_generatedcertificates
+- cohort_events
+- cohorts
 - course_module
 - courses
 - courseware_studentmodule
@@ -25,9 +26,11 @@ Here is a list of the tables present in our database in alphabetical order.
 - discussion_vote 
 - discussion_view
 - django_comment_client_role_users
+- drag_and_drop
 - forum_searched
 - forum_text_created
 - forum_text_voted
+- log_dump (previously all_logs)
 - poll_submissions
 - problem_definition
 - problem_submission
@@ -37,6 +40,7 @@ Here is a list of the tables present in our database in alphabetical order.
 - student_courseaccessrole
 - student_courseenrollment
 - student_languageproficiency
+- team_logs
 - teams
 - teams_membership
 - user_id_map
@@ -349,6 +353,27 @@ Due to how the foreign keys are set up in the database, it is important to first
 
 The inserts for question and problem definitions are done a little differently. In order to avoid inserting the same definition every time a student completes a problem, we build hashmaps (keys are compared based on problem/quesiton ids) and then insert at the end - normal inserts are done after every line. 
 
+Drag and Drop
+^^^^^^^^^^^^^^^^^^^^^^^
+Drag and drop problems are programmed differently from standard edx problem types, and so are logged differently in the tracking logs. For this table, we only include results from the new drag and drop format, logged as the *edx.drag_and_drop_v2.* events.  
+The *drag_and_drop* table has the following format:
+
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11) auto increment
+course_id                         varchar(255)
+user_id                           int(11)
+time_event_emitted                datetime(6)
+event_type                        varchar(255)
+module_id                         varchar(255)
+item_id                           smallint(6)
+item_name                         varchar(255)
+location_id                       varchar(255)
+location_name                     varchar(255)
+correctness                       tinyint(1)
+===========================     =============================================================
+
 Poll events
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -375,6 +400,49 @@ A sample entry might look like:
 ``| /courses/course-v1:McGillX+GROOCx+T3_2015/xblock/block-v1:McGillX+GROOCx+T3_2015+type@poll+block@5455f167adb241e583f3462976e77057/handler/vote |``
 
 Note that the usage_key field is a module_id as described in the courseware_studentmodule table. 
+
+Team Events
+^^^^^^^^^^^^^^^^^^^^^^^
+We have three tables describing the teams activity in our courses. The *teams* and *teams_membership* tables are uploaded from their respective sql files. The *team_logs* table, on the other hand, is populated via the tracking logs. There are three types of events that we include in this table: team creation, deletion, and activity updates. The format of the table is as follows:
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11) auto increment
+user_id                           int(11)
+course_id                         varchar(255)
+time_event_emitted                datetime(6)
+event_type                        varchar(255)
+page_url                          text
+team_code                         varchar(255)
+===========================     =============================================================
+
+Cohort Events
+^^^^^^^^^^^^^^^^^^^^^^^
+We have two tables to log activity related to the cohorts in our courses: *cohorts* and *cohort_events*. The former contains information from the *edx.cohort.created* event type, and the latter contains both *user_added* and *user_removed* events. The *cohorts* table has the following format:
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11)
+original_name                     varchar(255)
+time_cohort_created               datetime(6)
+course_id                         varchar(255)
+final_name                        varchar(255)
+===========================     =============================================================
+Note that the final_name was added manually for each cohort. At cohort creation, the original name is included in the tracking logs, but (as far as we can tell) there is no event for name updates.
+
+The *cohort_events* table has the following format:
+===========================     =============================================================
+Field                             Type   
+===========================     =============================================================
+id                                int(11) auto increment
+cohort_id                         int(11)
+user_id                           int(11)
+event_type                         varchar(255)
+time_event_emitted                datetime(6)
+course_id                         varchar(255)
+===========================     =============================================================
+
+The information in this table can be used to determine if course interaction patterns vary across cohorts. 
 
 Implicit Events
 ^^^^^^^^^^^^^^^^^^^^^^^
