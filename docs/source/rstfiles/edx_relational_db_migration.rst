@@ -404,6 +404,7 @@ Note that the usage_key field is a module_id as described in the courseware_stud
 Team Events
 ^^^^^^^^^^^^^^^^^^^^^^^
 We have three tables describing the teams activity in our courses. The *teams* and *teams_membership* tables are uploaded from their respective sql files. The *team_logs* table, on the other hand, is populated via the tracking logs. There are three types of events that we include in this table: team creation, deletion, and activity updates. The format of the table is as follows:
+
 ===========================     =============================================================
 Field                             Type   
 ===========================     =============================================================
@@ -419,6 +420,7 @@ team_code                         varchar(255)
 Cohort Events
 ^^^^^^^^^^^^^^^^^^^^^^^
 We have two tables to log activity related to the cohorts in our courses: *cohorts* and *cohort_events*. The former contains information from the *edx.cohort.created* event type, and the latter contains both *user_added* and *user_removed* events. The *cohorts* table has the following format:
+
 ===========================     =============================================================
 Field                             Type   
 ===========================     =============================================================
@@ -428,9 +430,11 @@ time_cohort_created               datetime(6)
 course_id                         varchar(255)
 final_name                        varchar(255)
 ===========================     =============================================================
+
 Note that the final_name was added manually for each cohort. At cohort creation, the original name is included in the tracking logs, but (as far as we can tell) there is no event for name updates.
 
 The *cohort_events* table has the following format:
+
 ===========================     =============================================================
 Field                             Type   
 ===========================     =============================================================
